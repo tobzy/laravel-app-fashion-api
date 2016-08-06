@@ -1,38 +1,75 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Ramsey\Uuid\Uuid;
 
-class UserTableSeeder extends Seeder
-{
+class UserTableSeeder extends Seeder {
+
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
-        DB::table('users')->insert([
-            'first_name' => 'Amadosi',
-            'last_name' => 'Odaibo',
-            'telephone' => '08166925838',
-            'address' => 'No 15 sankore avenue U.I',
-            'city' => 'Ibadan',
-            'state' => 'Oyo',
-            'country' => 'Nigeria',
-            'email' => 'odaiboamadosi@yahoo.com',
-            'password' => bcrypt('foregan1'),
+    public function run() {
+        $faker = Faker::create();
+
+        // create a main user for the development process that we are in control of
+        $user = App\User::create([
+                    'uuid' => Uuid::uuid1(),
+                    'first_name' => 'Amadosi',
+                    'last_name' => 'Odaibo',
+                    'telephone' => '08082315489',
+                    'email' => 'odaiboamadosi@gmail.com',
+                    'password' => bcrypt('foregan1'),
+                    'confirmation' => 1,
         ]);
-        
-        DB::table('users')->insert([
-            'first_name' => 'Osagie',
-            'last_name' => 'Omon',
-            'telephone' => '08038355439',
-            'address' => 'No 15 Appar Apapa',
-            'city' => 'Ikeja',
-            'state' => 'Lagos',
-            'country' => 'Nigeria',
-            'email' => 'cjaeomon@yahoo.com',
-            'password' => bcrypt('foregan1'),
+        App\Address::create([
+            'user_id' => $user->id,
+            'street_add' => $faker->streetAddress,
+            'city' => $faker->city,
+            'state' => 'ibadan',
+            'type' => 'billing',
+            'country' => $faker->country
         ]);
+        App\Address::create([
+            'user_id' => $user->id,
+            'street_add' => $faker->streetAddress,
+            'city' => $faker->city,
+            'state' => 'ibadan',
+            'type' => 'delivery',
+            'country' => $faker->country
+        ]);
+
+        //create general users for the rest of the process
+        for ($i = 0; $i < 20; $i++) {
+            $user = App\User::create([
+                        'uuid' => $faker->uuid,
+                        'first_name' => $faker->firstName($gender = null | 'male' | 'female'),
+                        'last_name' => $faker->lastName,
+                        'telephone' => $faker->phoneNumber,
+                        'email' => $faker->email,
+                        'password' => bcrypt('foregan1'),
+                        'confirmation' => $faker->randomElement($array = [0, 1]),
+            ]);
+            
+            App\Address::create([
+                'user_id' => $user->id,
+                'street_add' => $faker->streetAddress,
+                'city' => $faker->city,
+                'state' => 'ibadan',
+                'type' => 'delivery',
+                'country' => $faker->country
+            ]);
+            App\Address::create([
+            'user_id' => $user->id,
+            'street_add' => $faker->streetAddress,
+            'city' => $faker->city,
+            'state' => 'ibadan',
+            'type' => 'billing',
+            'country' => $faker->country
+        ]);
+        }
     }
+
 }
