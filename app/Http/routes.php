@@ -18,7 +18,7 @@ Route::get('/', function () {
 //group for the routes linking to the api
 Route::group(['prefix' => 'v1'], function() {
 
-    Route::post('auth', 'Auth\AuthController@authenticate');
+    Route::post('auth','Auth\AuthController@authenticate');
     Route::post('auth/deauth', 'Auth\AuthController@deauthenticate');
     Route::post('auth/create', 'Auth\AuthController@create');
     Route::get('auth/activation/{token}', 'Auth\AuthController@activate')->name('user.activate');
