@@ -25,6 +25,7 @@ class UsersController extends ApiController
             'first_name' => (string)$user -> first_name,
             'last_name' => (string)$user -> last_name,
             'email' => (string)$user -> email,
+            'designer' => (boolean)$user -> designer,
             'confirmed' => (boolean)$user -> confirmation,
             'billing_address' => $address -> where('type','billing'),
             'delivery_address' => $address -> where('type','delivery'),
