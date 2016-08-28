@@ -15,7 +15,7 @@ class CreateDesignsTable extends Migration
         Schema::create('designs', function (Blueprint $table) {
             $table->increments('id');
             $table -> string('uuid');
-            $table->string('user_id');
+            $table->string('designer_id');
             $table->string('title');
             $table->string('description');
             $table->string('location');

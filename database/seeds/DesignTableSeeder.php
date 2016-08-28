@@ -19,7 +19,7 @@ class DesignTableSeeder extends Seeder
         $design->title = "Center Table";
         $design->description = "Very Smooth, Lovely";
         $design->uuid = Uuid::uuid1()."_".$time;
-        $design->user_id = 1;
+        $design->designer_id = 1;
         $design->original_name = "food.jpg";
         $design->location = 'uploads/30.jpg';
         $design->save();
@@ -30,7 +30,7 @@ class DesignTableSeeder extends Seeder
         $design->title = "Media Cabinet";
         $design->description = "Very Smooth, Lovely";
         $design->uuid = Uuid::uuid1()."_".$time;
-        $design->user_id = 1;
+        $design->designer_id = 1;
         $design->original_name = "meat.jpg";
         $design->location = 'uploads/32.jpg';
         $design->save();
@@ -41,7 +41,7 @@ class DesignTableSeeder extends Seeder
         $design->title = "Entertainment Unit";
         $design->description = "Very Smooth, Lovely";
         $design->uuid = Uuid::uuid1()."_".$time;
-        $design->user_id = 1;
+        $design->designer_id = 1;
         $design->original_name = "love.jpg";
         $design->location = 'uploads/31.jpg';
         $design->save();

@@ -32,8 +32,20 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('account', 'AccountController@account');
         Route::put('account/address/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
-
-        Route::get('design','DesignController@index')->name('getdesigns');
-        Route::put('design','DesignController@store');
     });
+
+    //the design resourse route to handle all design routes
+    Route::resource('/designer/design', 'DesignController',[
+        'except' => ['edit','create']
+    ]);
+    
+    //the designer register post to databse
+    Route::post('/designer', [
+        'uses' => 'DesignerController@store'
+    ]);
+    //the designer sign in route...
+    Route::post('/designer/signin', [
+        'uses' => 'DesignerController@signin'
+    ]);
 });
+

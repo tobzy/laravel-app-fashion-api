@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
