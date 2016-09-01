@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 //group for the routes linking to the api
-Route::group(['prefix' => 'v1'], function() {
+Route::group(['prefix' => 'v1'], function () {
 
-    Route::post('auth','Auth\AuthController@authenticate');
+    Route::post('auth', 'Auth\AuthController@authenticate');
     Route::post('auth/deauth', 'Auth\AuthController@deauthenticate');
     Route::post('auth/create', 'Auth\AuthController@create');
     Route::get('auth/activation/{token}', 'Auth\AuthController@activate')->name('user.activate');
@@ -26,20 +26,22 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('auth/social', 'SocialAuthController@authSocial');
 
 
-
-    Route::group(['middleware' => ['jwt.auth']], function() {
+    Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('users', 'UsersController@authUser');
         Route::get('account', 'AccountController@account');
-        Route::put('account/address/update','AccountController@updateAddress');
-        Route::put('account/email/update','AccountController@updateEmail');
+        Route::put('account/address/update', 'AccountController@updateAddress');
+        Route::put('account/email/update', 'AccountController@updateEmail');
     });
 
-    //the design resourse route to handle all design routes
-    Route::resource('/designer/design', 'DesignController',[
-        'except' => ['edit','create']
-    ]);
-    
-    //the designer register post to databse
+
+    Route::group(['middleware' => ['designer.auth']], function () {
+        //the design resourse route to handle all design routes
+        Route::resource('/designer/design', 'DesignController', [
+            'except' => ['edit', 'create']
+        ]);
+    });
+
+    //the designer register post to database
     Route::post('/designer', [
         'uses' => 'DesignerController@store'
     ]);
@@ -47,5 +49,13 @@ Route::group(['prefix' => 'v1'], function() {
     Route::post('/designer/signin', [
         'uses' => 'DesignerController@signin'
     ]);
+    Route::post('test', function () {
+        $token = JWTAuth::getToken();
+        $a = $token->get();
+        return response()->json([
+            'token' => $a
+        ]);
+    });
+
 });
 
