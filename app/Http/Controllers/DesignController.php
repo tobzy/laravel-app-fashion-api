@@ -16,22 +16,25 @@ class DesignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $designs = Design::all();
+        $id = $request->designer_id;
+        $designs = Design::where('designer_id',$id)->get();
+        if(count($designs)>0){
+            foreach ($designs as $design) {
+                $design->view_design = [
+                    'href' => '/v1/designer/design/' . $design->id,
+                    'method' => 'GET'
+                ];
+            }
 
-        foreach ($designs as $design) {
-            $design->view_design = [
-                'href' => '/v1/designer/design/' . $design->id,
-                'method' => 'GET'
+            $response = [
+                'message' => 'List of all designs.. from '. $design->designer->full_name,
+                'designs' => $designs
             ];
+            return response()->json($response, 200);
         }
-
-        $response = [
-            'message' => 'List of all designs..',
-            'designs' => $designs
-        ];
-        return response()->json($response, 200);
+       return response()->json(['message'=>'No Designs From this user'],404);
     }
 
 
@@ -43,6 +46,7 @@ class DesignController extends Controller
      */
     public function store(Request $request)
     {
+        $request['designer_id'] = $request->designer_id;
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
@@ -85,21 +89,27 @@ class DesignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $design = Design::where('id', $id)->first();
+
         if ($design) {
-            $design->view_meetings = [
-                'href' => '/v1/designer/design',
-                'method' => 'GET'
-            ];
+            if($design->designer_id == $request->designer_id){
 
-            $response = [
-                'message' => 'Design Information',
-                'design' => $design
-            ];
+                $design->view_meetings = [
+                    'href' => '/v1/designer/design',
+                    'method' => 'GET'
+                ];
 
-            return response()->json($response, 200);
+                $response = [
+                    'message' => 'Design Information',
+                    'design' => $design
+                ];
+
+                return response()->json($response, 200);
+            }
+            return response()->json(['error'=>'This designer can\'t view this design'],401);
+
         }
         $response = [
             'message' => 'NO SUCH DESIGN!',
@@ -117,6 +127,7 @@ class DesignController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request['designer_id'] = $request->designer_id;
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
@@ -127,9 +138,14 @@ class DesignController extends Controller
 
         $design = Design::where('id',$id)->first();
 
+        if(empty($design)){
+            return response()->json([
+                'message' => 'No such design'
+            ],401);
+        }
         if (!$design->designer()->where('designers.id',$designer_id)->first()) {
             return response()->json([
-                'message' => 'Designer Not Registered for meeting, Update not successful'
+                'message' => 'Designer didn\'t make this design, Update not successful'
             ],401);
         }
         
@@ -163,27 +179,39 @@ class DesignController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $designer_id = $request->designer_id;
         $design = Design::where('id',$id)->first();
-        if ($design->delete()) {
-            $design->create = [
-                'href' => '/v1/designer/design',
-                'method' => 'POST',
-                'params' => 'title, description, location'
-            ];
+        if(empty($design)){
+            return response()->json(['error'=>'No such design'], 404);
+        }
+        if($designer_id == $design->designer_id){
+            if ($design->delete()) {
+                $design->create = [
+                    'href' => '/v1/designer/design',
+                    'method' => 'POST',
+                    'params' => 'title, description, location'
+                ];
+                $response = [
+                    'message' => 'Design Deleted',
+                    'design' => $design
+                ];
+                return response()->json($response, 200);
+            }
             $response = [
-                'message' => 'Design Deleted',
-                'design' => $design
+                'message' => 'Error during Deleting. Try again',
             ];
-            return response()->json($response, 200);
+            return response()->json($response, 404);
         }
 
         $response = [
-            'message' => 'Error during Deleting. Try again',
+            'error' => 'Designer not allowed to delete. Try again',
         ];
         return response()->json($response, 404);
+
+
 
 
     }

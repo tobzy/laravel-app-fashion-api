@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Config;
 use Ramsey\Uuid\Uuid;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
@@ -40,7 +39,7 @@ class DesignerController extends Controller
             ];
             $response = [
                 'msg' => 'Designer created',
-                'designer' => $designer
+                'designer' => $designer,
             ];
 
             return response()->json($response, 201);
@@ -60,19 +59,28 @@ class DesignerController extends Controller
         ]);
 
         // grab credentials from the request
-        $credentials = $request->only('email', 'password');
+        $email = $request['email'];
+        $password = ($request['password']);
 
-        try {
-            // attempt to verify the credentials and create a token for the user
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['message' => 'invalid_credentials'], 401);
+        $designer = Designer::where('email', $email)->first();
+        //grab password from database
+        if (!empty($designer)) {
+            $db_password = $designer->password;
+            if (password_verify($password, $db_password)) {
+                // all good so return the token;
+                $token = JWTAuth::fromUser($designer);
+                $designer->token = $token;
+//                $designer->token = "12345";
+                $designer->save();
+
+                return response()->json(['token' => $designer->token]);
             }
-        } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
-            return response()->json(['message' => 'could_not_create_token'], 500);
         }
 
-        // all good so return the token
-        return response()->json(['token'=>$token]);
+        return response()->json([
+            'hasError' => 'true',
+            'message' => 'Invalid credentials'
+        ]);
+
     }
 }
