@@ -19,6 +19,7 @@ class CreateDesignersTable extends Migration
             $table->string('full_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->text('token');
             $table->rememberToken();
             $table->timestamps();
         });
