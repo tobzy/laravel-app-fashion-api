@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Ramsey\Uuid\Uuid;
 use Carbon\Carbon;
+use Validator;
 
-class DesignController extends Controller
+class DesignController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -32,9 +33,9 @@ class DesignController extends Controller
                 'message' => 'List of all designs.. from '. $design->designer->full_name,
                 'designs' => $designs
             ];
-            return response()->json($response, 200);
+            return $this->respondWithoutError($response);
         }
-       return response()->json(['message'=>'No Designs From this user'],404);
+        return $this->respondWithError(404, 'request_error', 'No Designs From this user');
     }
 
 
@@ -47,12 +48,24 @@ class DesignController extends Controller
     public function store(Request $request)
     {
         $request['designer_id'] = $request->designer_id;
-        $this->validate($request, [
+
+        //validate the post request
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'designer_id' => 'required'
+            'designer_id' => 'required',
         ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            $error = [
+                'hasError' => true,
+                'message' => $validator->errors(),
+            ];
+            return response()->json(['errors' => $error]);
+        }
+
 
         $design = new Design();
         $time = new Carbon();
@@ -74,13 +87,10 @@ class DesignController extends Controller
                 'message' => 'Design Created',
                 'design' => $design
             ];
-            return response()->json($response, 201);
+            return $this->respondWithoutError($response);
         }
 
-        $response = [
-            'message' => 'Error, Design not Uploaded. Try again',
-        ];
-        return response()->json($response, 404);
+        return $this->respondWithError(404, 'request_error', 'Error, Design not Uploaded. Try again');
     }
 
     /**
@@ -106,16 +116,13 @@ class DesignController extends Controller
                     'design' => $design
                 ];
 
-                return response()->json($response, 200);
+                return $this->respondWithoutError($response);
             }
-            return response()->json(['error'=>'This designer can\'t view this design'],401);
+            return $this->respondWithError(401, 'request_error', 'This designer can\'t view this design');
 
         }
-        $response = [
-            'message' => 'NO SUCH DESIGN!',
-        ];
-        return response()->json($response, 404);
 
+        return $this->respondWithError(404, 'request_error', 'No such Design!');
     }
 
     /**
@@ -128,25 +135,34 @@ class DesignController extends Controller
     public function update(Request $request, $id)
     {
         $request['designer_id'] = $request->designer_id;
-        $this->validate($request, [
+
+        //validate the post request
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'designer_id' => 'required'
+            'designer_id' => 'required',
         ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            $error = [
+                'hasError' => true,
+                'message' => $validator->errors(),
+            ];
+            return response()->json(['errors' => $error]);
+        }
+
+
         $designer_id = $request->input('designer_id');
 
         $design = Design::where('id',$id)->first();
 
         if(empty($design)){
-            return response()->json([
-                'message' => 'No such design'
-            ],401);
+            return $this->respondWithError(401, 'request_error', 'No such Design!');
         }
         if (!$design->designer()->where('designers.id',$designer_id)->first()) {
-            return response()->json([
-                'message' => 'Designer didn\'t make this design, Update not successful'
-            ],401);
+            return $this->respondWithError(401, 'request_error', 'Designer didn\'t make this design, Update not successful');
         }
         
         $design->title = $request->input('title');
@@ -164,13 +180,10 @@ class DesignController extends Controller
                 'message' => 'Design Updated',
                 'design' => $design
             ];
-            return response()->json($response, 200);
+            return $this->respondWithoutError($response);
         }
-
-        $response = [
-            'message' => 'Error during Updating. Try again',
-        ];
-        return response()->json($response, 404);
+        
+        return $this->respondWithError(404, 'request_error', 'Error during Updating. Try again');
     }
 
     /**
@@ -185,7 +198,7 @@ class DesignController extends Controller
         $designer_id = $request->designer_id;
         $design = Design::where('id',$id)->first();
         if(empty($design)){
-            return response()->json(['error'=>'No such design'], 404);
+            return $this->respondWithError(404, 'request_error', 'No such Design');
         }
         if($designer_id == $design->designer_id){
             if ($design->delete()) {
@@ -198,21 +211,13 @@ class DesignController extends Controller
                     'message' => 'Design Deleted',
                     'design' => $design
                 ];
-                return response()->json($response, 200);
+                return $this->respondWithoutError($response);
             }
-            $response = [
-                'message' => 'Error during Deleting. Try again',
-            ];
-            return response()->json($response, 404);
+            return $this->respondWithError(404, 'request_error', 'Error during Deleting. Try again');
         }
-
-        $response = [
-            'error' => 'Designer not allowed to delete. Try again',
-        ];
-        return response()->json($response, 404);
-
-
-
+        
+        return $this->respondWithError(404, 'request_error', 'Designer not allowed to delete. Try again');
+        
 
     }
 }
