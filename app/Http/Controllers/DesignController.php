@@ -79,7 +79,7 @@ class DesignController extends ApiController
         $design->designer_id = $request->input('designer_id');
 
         if ($design->save()) {
-            $design->view_meeting = [
+            $design->view_design = [
                 'href' => '/v1/designer/design/' . $design->id,
                 'method' => 'GET'
             ];
@@ -106,7 +106,7 @@ class DesignController extends ApiController
         if ($design) {
             if($design->designer_id == $request->designer_id){
 
-                $design->view_meetings = [
+                $design->view_designs = [
                     'href' => '/v1/designer/design',
                     'method' => 'GET'
                 ];
@@ -172,7 +172,7 @@ class DesignController extends ApiController
         $design->designer_id = $request->input('designer_id');
 
         if ($design->update()) {
-            $design->view_meeting = [
+            $design->view_design = [
                 'href' => '/v1/designer/design/' . $design->id,
                 'method' => 'GET'
             ];

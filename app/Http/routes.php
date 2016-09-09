@@ -39,6 +39,8 @@ Route::group(['prefix' => 'v1'], function () {
         Route::resource('/designer/design', 'DesignController', [
             'except' => ['edit', 'create']
         ]);
+
+        Route::get('designers', 'DesignerController@authDesigner');
     });
 
     //the designer register post to database

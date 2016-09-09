@@ -99,4 +99,24 @@ class DesignerController extends ApiController
         return $this->respondWithError(404, 'request_error', 'Invalid credentials');
 
     }
+
+    public function authDesigner(Request $request)
+    {
+
+
+            $designer = Designer::where('id',$request->designer_id)->first();
+
+            if(!empty($designer)){
+                return $this->respondWithoutError($this->transformDesignerToJson($designer));
+            }
+
+    }
+    private function transformDesignerToJson($designer){
+        return ['designer' =>[
+            'uuid' => (string)$designer->uuid,
+            'full_name' => (string)$designer -> full_name,
+            'username' => (string)$designer -> username,
+            'email' => (string)$designer -> email
+        ]];
+    }
 }

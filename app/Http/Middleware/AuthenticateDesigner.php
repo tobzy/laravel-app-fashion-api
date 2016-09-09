@@ -27,7 +27,6 @@ class AuthenticateDesigner
             }
             return response()->json([
                 'designer' => "No Designer with the token",
-                'token' => $la_token
             ]);
         }
         return response()->json([
