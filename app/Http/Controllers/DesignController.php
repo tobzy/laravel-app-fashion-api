@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Design;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Ramsey\Uuid\Uuid;
 use Carbon\Carbon;
 use Validator;
@@ -20,7 +21,7 @@ class DesignController extends ApiController
     public function index(Request $request)
     {
         $id = $request->designer_id;
-        $designs = Design::where('designer_id',$id)->get();
+        $designs = Design::where('designer_id',$id)->orderBy('id','desc')->get();
         if(count($designs)>0){
             foreach ($designs as $design) {
                 $design->view_design = [
@@ -47,37 +48,44 @@ class DesignController extends ApiController
      */
     public function store(Request $request)
     {
-        $request['designer_id'] = $request->designer_id;
-
         //validate the post request
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'designer_id' => 'required',
-        ]);
+//        $validator = Validator::make($request->all(), [
+//            'title' => 'required',
+//            'description' => 'required',
+//            'designer_id' => 'required',
+//        ]);
+//
+//        //if validator fails return json error responce
+//        if ($validator->fails()) {
+//            $error = [
+//                'hasError' => true,
+//                'message' => $validator->errors(),
+//            ];
+//            return response()->json(['errors' => $error]);
+//        }
 
-        //if validator fails return json error responce
-        if ($validator->fails()) {
-            $error = [
-                'hasError' => true,
-                'message' => $validator->errors(),
-            ];
-            return response()->json(['errors' => $error]);
-        }
+//        $ext = $request->file('file')->getClientOriginalExtension();
+        $original_name = $request->file('file')->getClientOriginalName();
+//        $mimetype = $request->file('file')->getMimeType();
 
-
-        $design = new Design();
         $time = new Carbon();
         $time = $time->timestamp;
+        $uuid = Uuid::uuid1();
+        $name = $uuid . "_" . $time;
 
+        Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
+//
+        $request['designer_id'] = $request->designer_id;
+//
+        $design = new Design();
+//
         $design->title = $request->input('title');
-        $design->uuid = Uuid::uuid1() . '_' . $time;
+        $design->uuid = $uuid . '_' . $time;
         $design->description = $request->input('description');
-        $design->location = $request->input('location');
-        $design->original_name = $request->input('original_name');
+        $design->location = 'http://localhost:8000/uploads/' . $name;
+        $design->original_name = $original_name;
         $design->designer_id = $request->input('designer_id');
-
+//
         if ($design->save()) {
             $design->view_design = [
                 'href' => '/v1/designer/design/' . $design->id,
@@ -89,7 +97,6 @@ class DesignController extends ApiController
             ];
             return $this->respondWithoutError($response);
         }
-
         return $this->respondWithError(404, 'request_error', 'Error, Design not Uploaded. Try again');
     }
 
