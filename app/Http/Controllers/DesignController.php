@@ -21,8 +21,8 @@ class DesignController extends ApiController
     public function index(Request $request)
     {
         $id = $request->designer_id;
-        $designs = Design::where('designer_id',$id)->orderBy('id','desc')->get();
-        if(count($designs)>0){
+        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(3);
+        if (count($designs) > 0) {
             foreach ($designs as $design) {
                 $design->view_design = [
                     'href' => '/v1/designer/design/' . $design->id,
@@ -31,7 +31,7 @@ class DesignController extends ApiController
             }
 
             $response = [
-                'message' => 'List of all designs.. from '. $design->designer->full_name,
+                'message' => 'List of all designs.. from ' . $design->designer->full_name,
                 'designs' => $designs
             ];
             return $this->respondWithoutError($response);
@@ -49,20 +49,20 @@ class DesignController extends ApiController
     public function store(Request $request)
     {
         //validate the post request
-//        $validator = Validator::make($request->all(), [
-//            'title' => 'required',
-//            'description' => 'required',
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
 //            'designer_id' => 'required',
-//        ]);
-//
-//        //if validator fails return json error responce
-//        if ($validator->fails()) {
-//            $error = [
-//                'hasError' => true,
-//                'message' => $validator->errors(),
-//            ];
-//            return response()->json(['errors' => $error]);
-//        }
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            $error = [
+                'hasError' => true,
+                'details' => $validator->errors(),
+            ];
+            return response()->json(['errors' => $error]);
+        }
 
 //        $ext = $request->file('file')->getClientOriginalExtension();
         $original_name = $request->file('file')->getClientOriginalName();
@@ -111,7 +111,7 @@ class DesignController extends ApiController
         $design = Design::where('id', $id)->first();
 
         if ($design) {
-            if($design->designer_id == $request->designer_id){
+            if ($design->designer_id == $request->designer_id) {
 
                 $design->view_designs = [
                     'href' => '/v1/designer/design',
@@ -144,39 +144,50 @@ class DesignController extends ApiController
         $request['designer_id'] = $request->designer_id;
 
         //validate the post request
-        $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'description' => 'required',
-            'location' => 'required',
-            'designer_id' => 'required',
-        ]);
-
-        //if validator fails return json error responce
-        if ($validator->fails()) {
-            $error = [
-                'hasError' => true,
-                'message' => $validator->errors(),
-            ];
-            return response()->json(['errors' => $error]);
-        }
-
+//        $validator = Validator::make($request->all(), [
+//            'title' => 'required',
+//            'description' => 'required',
+//        ]);
+//
+//        //if validator fails return json error responce
+//        if ($validator->fails()) {
+//            $error = [
+//                'hasError' => true,
+//                'details' => $validator->errors(),
+//            ];
+//            return response()->json(['errors' => $error]);
+//        }
 
         $designer_id = $request->input('designer_id');
 
-        $design = Design::where('id',$id)->first();
+        $design = Design::where('id', $id)->first();
 
-        if(empty($design)){
+        if (empty($design)) {
             return $this->respondWithError(401, 'request_error', 'No such Design!');
         }
-        if (!$design->designer()->where('designers.id',$designer_id)->first()) {
+        if (!$design->designer()->where('designers.id', $designer_id)->first()) {
             return $this->respondWithError(401, 'request_error', 'Designer didn\'t make this design, Update not successful');
         }
-        
+
+        if ($request->file('file')) {
+            $original_name = $request->file('file')->getClientOriginalName();
+
+            $time = new Carbon();
+            $time = $time->timestamp;
+            $uuid = Uuid::uuid1();
+            $name = $uuid . "_" . $time;
+
+            Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
+            $design->location = 'http://localhost:8000/uploads/' . $name;
+            $design->original_name = $original_name;
+        }
+
+
         $design->title = $request->input('title');
         $design->description = $request->input('description');
-        $design->location = $request->input('location');
-        $design->original_name = $request->input('original_name');
+
         $design->designer_id = $request->input('designer_id');
+
 
         if ($design->update()) {
             $design->view_design = [
@@ -189,7 +200,7 @@ class DesignController extends ApiController
             ];
             return $this->respondWithoutError($response);
         }
-        
+
         return $this->respondWithError(404, 'request_error', 'Error during Updating. Try again');
     }
 
@@ -203,11 +214,11 @@ class DesignController extends ApiController
     {
         //
         $designer_id = $request->designer_id;
-        $design = Design::where('id',$id)->first();
-        if(empty($design)){
+        $design = Design::where('id', $id)->first();
+        if (empty($design)) {
             return $this->respondWithError(404, 'request_error', 'No such Design');
         }
-        if($designer_id == $design->designer_id){
+        if ($designer_id == $design->designer_id) {
             if ($design->delete()) {
                 $design->create = [
                     'href' => '/v1/designer/design',
@@ -222,9 +233,9 @@ class DesignController extends ApiController
             }
             return $this->respondWithError(404, 'request_error', 'Error during Deleting. Try again');
         }
-        
+
         return $this->respondWithError(404, 'request_error', 'Designer not allowed to delete. Try again');
-        
+
 
     }
 }
