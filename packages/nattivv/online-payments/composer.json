@@ -1,0 +1,8 @@
+{
+    "name": "nattivv/online-payments",
+    "description": "Libray to handle all the online payments for the nattivv api",
+    "type": "library",
+    "license": "Nattivv Dev Licence",
+    "minimum-stability": "dev",
+    "require": {}
+}

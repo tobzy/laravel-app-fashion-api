@@ -15,4 +15,13 @@ class Product extends Model
     public function image(){
         return $this->hasMany('App\ProductImage');
     }
+
+    public function default_material(){
+        return $this->belongsTo('App\Material','default_material');
+    }
+
+    public function default_material_with_cat($id){
+        $material = Material::with('category')->whereId($id)->first();
+        return $material;
+    }
 }

@@ -24,7 +24,7 @@ class MaterialsTableSeeder extends Seeder
                     'image' => 'http://localhost:8000/images/si2.jpg',
                     'color' => $faker ->colorName,
                     'available_qty' => $faker -> randomDigit(),
-                    'price' => $faker -> numberBetween($min = 2500, $max = 10,000)
+                    'price' => $faker -> randomFloat(2, $min=2500 ,$max=10000)
                 ]);
             }
         }

@@ -33,4 +33,12 @@ Route::group(['prefix' => 'v1'], function() {
         Route::put('account/address/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
     });
+
+    // Routes for the store and purchase process
+    Route::get('store','StoreController@getProducts');
+    Route::get('store/item','StoreController@getSingleItem');
+    Route::get('materials','StoreController@getMaterials');
+    Route::get('material','StoreController@getSingleMaterial');
+
+
 });
