@@ -206,8 +206,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
-      //  'Payment' =>
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'Payment' => Nattivv\OnlinePayments\Facades\OnlinePayment::class,
     ],
 
 ];

@@ -3,6 +3,7 @@
 namespace Nattivv\OnlinePayments;
 
 use Illuminate\Support\ServiceProvider;
+use Nattivv\OnlinePayments\Facades\OnlinePayment;
 
 class OnlinePaymentsServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class OnlinePaymentsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/config/payments.php' => config_path('payments.php'),
+        ]);
     }
 
     /**
@@ -23,6 +26,16 @@ class OnlinePaymentsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        //register the online payment binding for the facade
+        $this->registerOnlinePaymentBinding();
+
+    }
+
+    private function registerOnlinePaymentBinding(){
+        $this->app->bind('Payment', function ($app) {
+            return new OnlinePaymentManager($app);
+        });
+
     }
 }

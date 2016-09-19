@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSessionsTable extends Migration
+class CreatePaystarkAuthTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions',function (Blueprint $table){
-            $table -> increments('id');
+        Schema::create('pay_stack_authorisation',function (Blueprint $table){
+            $table-> increments('id');
             $table -> integer('user_id');
-            $table -> integer('fitter_id');
-            $table ->string('status')->default('pending');
-            $table -> timestamps();
+            $table -> integer('customer_id');
+            $table -> string('customer_code');
+
         });
     }
 
@@ -28,6 +28,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sessions');
+        //
     }
 }
