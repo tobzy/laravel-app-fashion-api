@@ -21,7 +21,7 @@ class DesignController extends ApiController
     public function index(Request $request)
     {
         $id = $request->designer_id;
-        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(3);
+        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(8);
         if (count($designs) > 0) {
             foreach ($designs as $design) {
                 $design->view_design = [
