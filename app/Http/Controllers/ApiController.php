@@ -58,13 +58,13 @@ class ApiController extends Controller {
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return $this->respondWithError('ERR-USR-0002', 'user_not_found', 'The user can not be found or doesnt exist.');
             }
-        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return $this->respondWithError('ERR-AUTH-0004', 'token_expired', $e->getMessage());
-        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 
             return $this->respondWithError('ERR-AUTH-0005', 'token_invalid', $e->getMessage());
-        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
 
             return $this->respondWithError('ERR-AUTH-0006', 'token_absent', $e->getMessage());
         }
