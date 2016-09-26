@@ -17,6 +17,14 @@ class CreatePaystarkAuthTable extends Migration
             $table -> integer('user_id');
             $table -> integer('customer_id');
             $table -> string('customer_code');
+            $table -> string('auth_code');
+            $table -> string('card_type');
+            $table -> string('last4');
+            $table -> string('exp_month');
+            $table ->string('exp_year');
+            $table ->string('channel');
+            $table ->boolean('reusable');
+            $table ->timestamps();
 
         });
     }
@@ -28,6 +36,6 @@ class CreatePaystarkAuthTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('pay_stack_authorisation');
     }
 }

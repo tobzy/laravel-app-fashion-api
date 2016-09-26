@@ -48,5 +48,4 @@ class AccountController extends ApiController {
     public function updateCreditCards() {
         
     }
-
 }

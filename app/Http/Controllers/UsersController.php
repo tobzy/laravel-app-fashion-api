@@ -17,6 +17,18 @@ class UsersController extends ApiController
         }
         
     }
+
+    public function getOrders(){
+        $orders = App\Order::whereUserId($this -> user -> id)->
+            limit(3)
+            ->get();
+        return $this->respondWithoutError(['orders' => $orders]);
+    }
+
+    public function getCreditCards(){
+        $cards = App\Paystack::whereUserId($this ->user -> id)->get(['card_type','last4','exp_month','exp_year']);
+        return $this->respondWithoutError(['cards'=>$cards]);
+    }
     
     private function transformUserToJson($user){
         $address = $user -> address;

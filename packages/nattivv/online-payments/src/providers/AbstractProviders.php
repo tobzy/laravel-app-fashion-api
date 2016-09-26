@@ -2,6 +2,13 @@
 namespace Nattivv\OnlinePayments\Providers;
 
 use GuzzleHttp\Client as Client;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\TooManyRedirectsException;
+use GuzzleHttp\Exception\TransferException;
 use Illuminate\Http\Request;
 use Nattivv\OnlinePayments\Contracts\Provider as ProviderContract;
 
@@ -132,12 +139,28 @@ abstract class AbstractProviders implements ProviderContract
                 'Authorization' => 'Bearer ' . $this->clientSecret,
             ],
 
-            $method==ProviderInterface::POST ?'json' : 'query'=>$data,
+            ($method==ProviderInterface::POST ? 'json' : 'query')=>$data,
         ];
 
-         $response = $this->httpClient->request((string)$method,$resource,$params);
+        try {
+            $response = $this->httpClient->request((string)$method, $resource, $params);
+            return $this->processHttpResponse($response);
+        }catch (ConnectException $e){
+            return $this->getError($e->getCode(),'connection_error',$e->getMessage());
+        }catch (TransferException $e){
+            return $this->getError($e->getCode(),'transfer_error',$e->getMessage());
+        }catch (RequestException $e){
+            return $this->getError($e->getCode(),'request_error',$e->getMessage());
+        }catch (ClientException $e){
+            return $this->getError($e->getCode(),'client_error',$e->getMessage());
+        }catch (BadResponseException $e){
+            return $this->getError($e->getCode(),'bad_response_error',$e->getMessage());
+        }catch (ServerException $e){
+            return $this->getError($e->getCode(),'server_error',$e->getMessage());
+        }catch (TooManyRedirectsException $e){
+            return $this->getError($e->getCode(),'too_many_redirects_error',$e->getMessage());
+        }
 
-        return $this->processHttpResponse($response);
 
     }
 
@@ -156,6 +179,6 @@ abstract class AbstractProviders implements ProviderContract
                 'title' => $title,
                 'message' => $message,
             ]
-        ]);
+        ],128);
     }
 }

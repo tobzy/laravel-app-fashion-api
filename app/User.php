@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function measurement(){
         return $this->hasOne('App\Measurement');
     }
+
+    public function paystack_account(){
+        return $this->hasMany('App\Paystack');
+    }
 }

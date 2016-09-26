@@ -32,9 +32,16 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('account', 'AccountController@account');
         Route::put('account/address/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
+        Route::get('account/confirm_measurement','MeasurementController@confirmMeasurement');
 
+        Route::get('user/measurement/{option}','MeasurementController@setMeasurements');
+        Route::get('user/orders','UsersController@getOrders');
+        Route::get('user/credit_cards','UsersController@getCreditCards');
+
+        Route::post('payment/initialise_transaction', 'PaymentController@getAuthUrl');
+        Route::get('payment/verify_transaction', 'PaymentController@verifyTransaction');
     });
-    Route::post('user/measurement/{option}','MeasurementController@setMeasurements');
+
     Route::post('user/payment/{option}/callback','MeasurementController@payment');
 
 

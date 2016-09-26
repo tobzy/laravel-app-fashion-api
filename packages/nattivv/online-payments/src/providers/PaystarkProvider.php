@@ -103,24 +103,26 @@ class PaystarkProvider extends AbstractProviders implements ProviderInterface
      * @param $reference
      * @param $amount
      * @param $customerEmail
+     * @param null $callback_url
      * @return json
      */
-    public function initialiseTransaction($reference = null, $amount, $customerEmail ){
+    public function initialiseTransaction($reference = null, $amount, $customerEmail, $callback_url = null ){
         return $this->getHttpResponse(ProviderInterface::POST,'transaction/initialize',[
             'reference' => $reference,
             'amount' => $amount,
-            'email' => $customerEmail
+            'email' => $customerEmail,
+            'callback_url' => $callback_url,
         ]);
     }
 
     /**
      * Verifys the transaction and charges the customer
-     * @param $transactionId
+     * @param $reference
      * @return json
      * @internal param $reference
      */
-    public function verifyTransaction($transactionId){
-        return $this->getHttpResponse(ProviderInterface::GET,'transaction/verify/'.$transactionId);
+    public function verifyTransaction($reference){
+        return $this->getHttpResponse(ProviderInterface::GET,'transaction/verify/'.$reference);
     }
 
     /**
