@@ -13,6 +13,21 @@ class MaterialsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $categories = [
+            'Atiku',
+            'Guinea',
+            'Lace',
+            'Silk',
+            'Ankara'
+        ];
+        // create materials category data
+
+        foreach($categories as $category){
+            App\MaterialCategory::create([
+                'name' => $category
+            ]);
+        }
+
         foreach(App\MaterialCategory::all() as $category){
             $count = $faker ->numberBetween(5,10);
 

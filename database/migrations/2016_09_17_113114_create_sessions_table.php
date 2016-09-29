@@ -15,7 +15,7 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions',function (Blueprint $table){
             $table -> increments('id');
             $table -> integer('user_id');
-            $table -> integer('fitter_id');
+            $table -> integer('fitter_id')->nullable();
             $table ->string('status')->default('pending');
             $table -> timestamps();
         });

@@ -18,28 +18,26 @@ class UsersController extends ApiController
         
     }
 
-    public function getOrders(){
-        $orders = App\Order::whereUserId($this -> user -> id)->
-            limit(3)
+    public function getOrders(Request $request ){
+        $orders = App\Order::whereUserId($this -> user -> id)
+            ->limit($request->input('limit'))
             ->get();
         return $this->respondWithoutError(['orders' => $orders]);
     }
 
     public function getCreditCards(){
-        $cards = App\Paystack::whereUserId($this ->user -> id)->get(['card_type','last4','exp_month','exp_year']);
+        $cards = App\Paystack::whereUserId($this ->user -> id)->get(['auth_code','card_type','last4','exp_month','exp_year']);
         return $this->respondWithoutError(['cards'=>$cards]);
     }
     
     private function transformUserToJson($user){
-        $address = $user -> address;
+
         return ['user' =>[
             'uuid' => (string)$user->uuid,
             'first_name' => (string)$user -> first_name,
             'last_name' => (string)$user -> last_name,
             'email' => (string)$user -> email,
             'confirmed' => (boolean)$user -> confirmation,
-            'billing_address' => $address -> where('type','billing'),
-            'delivery_address' => $address -> where('type','delivery'),
         ]];
     }
 }

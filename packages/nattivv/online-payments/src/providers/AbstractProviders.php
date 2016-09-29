@@ -11,6 +11,7 @@ use GuzzleHttp\Exception\TooManyRedirectsException;
 use GuzzleHttp\Exception\TransferException;
 use Illuminate\Http\Request;
 use Nattivv\OnlinePayments\Contracts\Provider as ProviderContract;
+use Psy\Util\Json;
 
 abstract class AbstractProviders implements ProviderContract
 {
@@ -169,16 +170,16 @@ abstract class AbstractProviders implements ProviderContract
      * @param $code
      * @param $title
      * @param $message
-     * @return string
+     * @return json
      */
     protected function getError($code, $title, $message){
-        return json_encode([
+        return json_decode(json_encode([
             'status' => false,
             'error' => [
                 'code' => $code,
                 'title' => $title,
                 'message' => $message,
             ]
-        ],128);
+        ]));
     }
 }

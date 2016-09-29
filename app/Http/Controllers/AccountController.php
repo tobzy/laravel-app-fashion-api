@@ -26,6 +26,39 @@ class AccountController extends ApiController {
         }
     }
 
+    public function newAddress(Request $request){
+        $address = App\Address::create([
+            'user_id' => $this ->user->id,
+            'street_add' => $request->input('street_add'),
+            'city' => $request -> input('city'),
+            'state' => $request -> input('state'),
+            'country' => $request -> input('country'),
+            'phone_no' => $request -> input('phone_no'),
+            //todo remove the type column from the address table
+            'type' => 'delivery',
+        ]);
+
+        return $this->respondWithoutError([
+            'address' => $address
+        ]);
+    }
+
+    public function getAddresses(Request $request){
+        $addresses = App\Address::where('user_id',$this->user->id)
+        ->limit($request->input('limit'))
+        ->get();
+
+        return $this->respondWithoutError([
+            'addresses' => $addresses
+        ]);
+    }
+
+    public function getSingleAddress($id){
+        $address = App\Address::whereId($id)->get();
+        return $this -> respondWithoutError([
+            'address' => $address,
+        ]);
+    }
     public function updateAddress(Request $request) {
         $address = App\Address::whereUserId($this->user->id)->whereType($request->input('type'))->first();
 

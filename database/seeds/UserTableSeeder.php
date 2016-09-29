@@ -29,16 +29,18 @@ class UserTableSeeder extends Seeder {
             'street_add' => $faker->streetAddress,
             'city' => $faker->city,
             'state' => 'ibadan',
-            'type' => 'billing',
-            'country' => $faker->country
+            'type' => 'Home',
+            'country' => $faker->country,
+            'phone_no' => $faker->phoneNumber
         ]);
         App\Address::create([
             'user_id' => $user->id,
             'street_add' => $faker->streetAddress,
             'city' => $faker->city,
             'state' => 'ibadan',
-            'type' => 'delivery',
-            'country' => $faker->country
+            'type' => 'Work',
+            'country' => $faker->country,
+            'phone_no' => $faker->phoneNumber
         ]);
 
         //create general users for the rest of the process
@@ -58,16 +60,19 @@ class UserTableSeeder extends Seeder {
                 'street_add' => $faker->streetAddress,
                 'city' => $faker->city,
                 'state' => 'ibadan',
-                'type' => 'delivery',
-                'country' => $faker->country
+                'type' => 'Home',
+                'country' => $faker->country,
+                'phone_no' => $faker->phoneNumber
+
             ]);
             App\Address::create([
             'user_id' => $user->id,
             'street_add' => $faker->streetAddress,
             'city' => $faker->city,
             'state' => 'ibadan',
-            'type' => 'billing',
-            'country' => $faker->country
+            'type' => 'Work',
+            'country' => $faker->country,
+                'phone_no' => $faker->phoneNumber
         ]);
         }
     }

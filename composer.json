@@ -11,7 +11,8 @@
         "tymon/jwt-auth": "^0.5.9",
         "illuminate/routing": "^5.2",
         "ramsey/uuid": "^3.4",
-        "yabacon/paystack-php": "^2.0"
+        "yabacon/paystack-php": "^2.0",
+        "moontoast/math": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

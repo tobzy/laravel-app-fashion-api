@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
         $tables = [
             'users',
             'products',
-            'materials'
+            'materials',
+            'addresses',
+            'orders',
+            'order_contents',
+            'sessions'
         ];
 
         foreach($tables as $table){

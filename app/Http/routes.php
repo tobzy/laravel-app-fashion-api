@@ -30,6 +30,9 @@ Route::group(['prefix' => 'v1'], function() {
     Route::group(['middleware' => ['jwt.auth']], function() {
         Route::get('users', 'UsersController@authUser');
         Route::get('account', 'AccountController@account');
+        Route::get('account/address','AccountController@getAddresses');
+        Route::post('account/address','AccountController@newAddress');
+        Route::get('account/address/{id}','AccountController@getSingleAddress');
         Route::put('account/address/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
         Route::get('account/confirm_measurement','MeasurementController@confirmMeasurement');
@@ -39,6 +42,7 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('user/credit_cards','UsersController@getCreditCards');
 
         Route::post('payment/initialise_transaction', 'PaymentController@getAuthUrl');
+        Route::get('payment/charge_customer','PaymentController@chargeCustomer');
         Route::get('payment/verify_transaction', 'PaymentController@verifyTransaction');
     });
 
