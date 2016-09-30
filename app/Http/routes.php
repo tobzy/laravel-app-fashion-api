@@ -43,7 +43,13 @@ Route::group(['prefix' => 'v1'], function () {
         Route::get('designers', 'DesignerController@authDesigner');
     });
 
-    //the designer register post to database
+    //signup verification and confirmation.
+    Route::get('register/verify/{confirmationCode}', [
+        'as' => 'confirmation_path',
+        'uses' => 'DesignerController@confirm'
+    ]);
+
+    //the designer registration store post to database
     Route::post('/designer', [
         'uses' => 'DesignerController@store'
     ]);
@@ -51,13 +57,13 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/designer/signin', [
         'uses' => 'DesignerController@signin'
     ]);
-    Route::post('test', function () {
-        $token = JWTAuth::getToken();
-        $a = $token->get();
-        return response()->json([
-            'token' => $a
-        ]);
-    });
+//    Route::post('test', function () {
+//        $token = JWTAuth::getToken();
+//        $a = $token->get();
+//        return response()->json([
+//            'token' => $a
+//        ]);
+//    });
 
 });
 

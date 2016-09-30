@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 use Ramsey\Uuid\Uuid;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
@@ -34,6 +35,7 @@ class DesignerController extends ApiController
             return response()->json(['errors' => $error]);
         }
         //
+        $confirmation_code = str_random(30);
 
         $designer = new Designer();
         $designer->username = $request->input('username');
@@ -43,16 +45,25 @@ class DesignerController extends ApiController
         $time = $time->timestamp;
         $designer->uuid = Uuid::uuid1() . '_' . $time;
         $designer->full_name = $request->input('full_name');
+        $designer->confirmation_code = $confirmation_code;
 
+        $email = $designer->email;
+        $designa = $designer->username;
         if ($designer->save()) {
             $designer->signin = [
                 'href' => 'v1/designer/signin',
                 'method' => 'POST',
                 'params' => 'email, password'
             ];
+
+            Mail::send('emails.designer_confirmation',['confirmation_code'=>$confirmation_code],function ($message) use ($email, $designa){
+                $message->to('admin@nattiv.com', 'Admin');
+                $message->from($email, $designa);
+                $message->subject('Thanks..');
+            });
             $response = [
-                'msg' => 'Designer created',
-                'designer' => $designer,
+                'msg' => 'Check your Email for Confirmation Link',
+                'designer' => $designer->full_name,
             ];
 
             return $this->respondWithoutError($response);
@@ -83,6 +94,10 @@ class DesignerController extends ApiController
         $password = ($request['password']);
 
         $designer = Designer::where('email', $email)->first();
+
+        if($designer->confirmed != 1){
+            return $this->respondWithError(404, 'signin_error', 'Please check your email to verify your account.');
+        }
         //grab password from database
         if (!empty($designer)) {
             $db_password = $designer->password;
@@ -110,6 +125,31 @@ class DesignerController extends ApiController
                 return $this->respondWithoutError($this->transformDesignerToJson($designer));
             }
 
+    }
+
+    public function confirm($confirmation_code){
+        if( ! $confirmation_code)
+        {
+            return $this->respondWithError(404, 'request_error', 'Invalid confirmation code');
+        }
+
+        $designer = Designer::whereConfirmationCode($confirmation_code)->first();
+
+        if ( ! $designer)
+        {
+            return $this->respondWithError(404, 'request_error', 'Invalid credentials');
+        }
+
+        $designer->confirmed = 1;
+        $designer->confirmation_code = null;
+        $designer->save();
+
+        $response = [
+            'msg' => 'You have successfully verified your account.',
+            'designer' => $designer->full_name,
+        ];
+
+        return $this->respondWithoutError($response);
     }
     private function transformDesignerToJson($designer){
         return ['designer' =>[
