@@ -41,6 +41,7 @@ Route::group(['prefix' => 'v1'], function () {
         ]);
 
         Route::get('designers', 'DesignerController@authDesigner');
+        Route::post('/designer/account/update', 'DesignerController@updateProfile');
     });
 
     //signup verification and confirmation.

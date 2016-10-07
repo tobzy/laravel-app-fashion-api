@@ -32,7 +32,7 @@ class DesignerController extends ApiController
                 'hasError' => true,
                 'message' => $validator->errors(),
             ];
-            return response()->json(['errors' => $error]);
+            return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
         }
         //
         $confirmation_code = str_random(30);
@@ -85,9 +85,12 @@ class DesignerController extends ApiController
                 'hasError' => true,
                 'message' => $validator->errors(),
             ];
-            return response()->json(['errors' => $error]);
+            return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
+//            return response()->json(['errors' => $error]);
         }
         //
+
+
 
         // grab credentials from the request
         $email = $request['email'];
@@ -95,12 +98,14 @@ class DesignerController extends ApiController
 
         $designer = Designer::where('email', $email)->first();
 
-        if($designer->confirmed != 1){
-            return $this->respondWithError(404, 'signin_error', 'Please check your email to verify your account.');
-        }
+
         //grab password from database
         if (!empty($designer)) {
             $db_password = $designer->password;
+
+            if($designer->confirmed != 1){
+                return $this->respondWithError(404, 'signin_error', 'Please check your email to verify your account.');
+            }
             if (password_verify($password, $db_password)) {
                 // all good so return the token;
                 $token = JWTAuth::fromUser($designer);
@@ -114,6 +119,7 @@ class DesignerController extends ApiController
         return $this->respondWithError(404, 'request_error', 'Invalid credentials');
 
     }
+
 
     public function authDesigner(Request $request)
     {
@@ -158,5 +164,84 @@ class DesignerController extends ApiController
             'username' => (string)$designer -> username,
             'email' => (string)$designer -> email
         ]];
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $designer = Designer::where('uuid', $uuid)->first();
+
+        if($request['username'] == $designer->username){
+            $response = [
+                'msg' => 'You entered your current username',
+                'username' => $designer->username
+            ];
+            return $this->respondWithoutError($response);
+        }
+        if($request['email'] == $designer->email){
+            $response = [
+                'msg' => 'You entered your current email',
+            ];
+            return $this->respondWithoutError($response);
+        }
+        //validate the post request
+        $validator = Validator::make($request->all(), [
+            'username' => 'alpha_num|unique:designers',
+            'email' => 'unique:designers',
+            'password' => 'min:8',
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            $error = [
+                'hasError' => true,
+                'message' => $validator->errors(),
+            ];
+            return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
+        }
+
+
+        if(!empty($request['username'])){
+            $designer->username = $request['username'];
+            $designer->update();
+            $response = [
+                'msg' => 'Username changed!.',
+                'username' => $designer->username
+            ];
+            return $this->respondWithoutError($response);
+        }
+        if(!empty($request['email'])){
+            $designer->email = $request['email'];
+            $designer->update();
+            $response = [
+                'msg' => 'Email changed!.',
+                'email' => $designer->email
+            ];
+            return $this->respondWithoutError($response);
+        }
+
+        if(!empty($request['full_name'])){
+            $designer->full_name = $request['full_name'];
+            $designer->update();
+            $response = [
+                'msg' => 'Full name changed!.',
+                'full_name' => $designer->full_name
+            ];
+            return $this->respondWithoutError($response);
+        }
+        if(!empty($request['password'])){
+            $designer->password = bcrypt($request['password']);
+            $designer->update();
+            $response = [
+                'msg' => 'Password changed!.',
+            ];
+            return $this->respondWithoutError($response);
+        }
+
+        $response = [
+            'msg' => 'Nothing changed!',
+        ];
+        return $this->respondWithoutError($response);
+
     }
 }
