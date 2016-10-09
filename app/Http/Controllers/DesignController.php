@@ -21,7 +21,7 @@ class DesignController extends ApiController
     public function index(Request $request)
     {
         $id = $request->designer_id;
-        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(3);
+        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(8);
         if (count($designs) > 0) {
             foreach ($designs as $design) {
                 $design->view_design = [
@@ -61,7 +61,7 @@ class DesignController extends ApiController
                 'hasError' => true,
                 'details' => $validator->errors(),
             ];
-            return response()->json(['errors' => $error]);
+            return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
         }
 
 //        $ext = $request->file('file')->getClientOriginalExtension();
@@ -144,19 +144,19 @@ class DesignController extends ApiController
         $request['designer_id'] = $request->designer_id;
 
         //validate the post request
-//        $validator = Validator::make($request->all(), [
-//            'title' => 'required',
-//            'description' => 'required',
-//        ]);
-//
-//        //if validator fails return json error responce
-//        if ($validator->fails()) {
-//            $error = [
-//                'hasError' => true,
-//                'details' => $validator->errors(),
-//            ];
-//            return response()->json(['errors' => $error]);
-//        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            $error = [
+                'hasError' => true,
+                'details' => $validator->errors(),
+            ];
+            return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
+        }
 
         $designer_id = $request->input('designer_id');
 

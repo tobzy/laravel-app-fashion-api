@@ -16,6 +16,7 @@ class CreateOrderTable extends Migration
             $table->increments('id');
             $table->string('uuid')->unique();
             $table->integer('user_id');
+            $table->string('design_id');
             $table->enum('status',['complete','pending','processing']);
             $table->string('payment_method');
             $table->timestamps();
