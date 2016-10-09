@@ -10,7 +10,7 @@
     <p>Thanks for creating an account with NATTIV.</p>
 
     <p>Please follow the link below to verify your email address</p>
-    <p>{{ URL::to('v1/register/verify/' . $confirmation_code) }}.</p>
+    <p>{{ URL::to('v1/register/verify/' . $confirmation_code) }}</p>
 
 </div>
 
