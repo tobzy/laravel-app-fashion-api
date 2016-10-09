@@ -15,4 +15,8 @@ class Order extends Model
     public function content(){
         return $this->hasMany('App\OrderContent');
     }
+
+    public function design(){
+        return $this->belongsTo('App\Design');
+    }
 }

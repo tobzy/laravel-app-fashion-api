@@ -11,4 +11,8 @@ class Design extends Model
     public function designer(){
         return $this->belongsTo('App\Designer');
     }
+
+    public function orders(){
+        return $this->hasMany('App\Order');
+    }
 }
