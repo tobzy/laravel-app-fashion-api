@@ -33,13 +33,15 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('account/address','AccountController@getAddresses');
         Route::post('account/address','AccountController@newAddress');
         Route::get('account/address/{id}','AccountController@getSingleAddress');
-        Route::put('account/address/update','AccountController@updateAddress');
+        Route::put('account/address/{id}/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
         Route::get('account/confirm_measurement','MeasurementController@confirmMeasurement');
 
         Route::get('user/measurement/{option}','MeasurementController@setMeasurements');
-        Route::get('user/orders','UsersController@getOrders');
+        Route::get('account/orders','UsersController@getOrders');
+        Route::get('account/orders/{id}','AccountController@getSingleOrder');
         Route::get('user/credit_cards','UsersController@getCreditCards');
+        Route::delete('user/credit_cards/{id}/delete','UsersController@deleteCreditCard');
 
         Route::post('payment/initialise_transaction', 'PaymentController@getAuthUrl');
         Route::get('payment/charge_customer','PaymentController@chargeCustomer');

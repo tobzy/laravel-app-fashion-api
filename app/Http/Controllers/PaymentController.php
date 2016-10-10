@@ -49,7 +49,7 @@ class PaymentController extends ApiController
             if($charge_auth ->data->status){
                 // input the items into the cart
                 $items = $request->input('items');
-                $this->createOrder(json_decode($items));
+                $this->createOrder(json_decode($items),$request->input('left_over_material'),$request->input('delivery_add'));
 
                 return $this->respondWithoutError([
                     'verified'=>true,
@@ -82,7 +82,7 @@ class PaymentController extends ApiController
         if($verification -> status){
             if ($verification->data-> status == "success"){
                 //create the orders
-                $this->createOrder($items);
+                $this->createOrder($items,$request->input('left_over_material'),$request->input('delivery_add'));
 
                 // check if the user has an authorisation with this card
                 $auth = Paystack::whereUserId($this->user->id)
@@ -107,7 +107,7 @@ class PaymentController extends ApiController
                 return $this->respondWithoutError([
                     'verified' => true,
                     'amount' => $verification ->data-> amount,
-                    'message' => 'Transaction Successfull',
+                    'message' => 'Transaction Successful',
                 ]);
             }
             return $this->respondWithoutError([
@@ -120,8 +120,10 @@ class PaymentController extends ApiController
 
     /**
      * @param $items
+     * @param $left_over
+     * @param $delivery_add_id
      */
-    private function createOrder($items){
+    private function createOrder($items,$left_over,$delivery_add_id){
         //create order and add the customers items to the items table
         // TODO use better uuid naming
         $order = Order::create([
@@ -129,6 +131,8 @@ class PaymentController extends ApiController
             'user_id' => $this->user->id,
             'status' => 'processing',
             'payment_method' => 'Credit Card',
+            'left_over_choice' => $left_over,
+            'delivery_add_id' => $delivery_add_id
 
         ]);
 
