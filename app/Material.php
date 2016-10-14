@@ -9,7 +9,7 @@ class Material extends Model
     protected $fillable = ['category','grade','image','color','available_qty','price'];
     
     public function category(){
-        return $this ->belongsTo('App\MaterialCategory');
+        return $this ->belongsTo('App\MaterialCategory', 'material_category_id');
     }
     
     public function order_content(){

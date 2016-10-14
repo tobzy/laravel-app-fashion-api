@@ -19,7 +19,7 @@ class CreateAddressTable extends Migration
             $table -> string('city');
             $table -> string('state');
             $table -> string('country');
-            $table -> enum('type',['billing','delivery']);
+            $table -> enum('type',['Home','Work','Public Area']);
             $table -> timestamps();
         });
     }

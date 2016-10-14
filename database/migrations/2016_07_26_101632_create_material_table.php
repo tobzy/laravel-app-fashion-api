@@ -14,7 +14,7 @@ class CreateMaterialTable extends Migration
     {
         Schema::create('materials',function(Blueprint $table){
             $table -> increments('id');
-            $table -> integer('category');
+            $table -> integer('material_category_id');
             $table -> enum('grade',['low','medium','high']);
             $table -> string('image');
             $table -> string('color');
