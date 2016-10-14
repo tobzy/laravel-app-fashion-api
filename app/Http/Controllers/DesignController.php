@@ -177,6 +177,7 @@ class DesignController extends ApiController
             $uuid = Uuid::uuid1();
             $name = $uuid . "_" . $time;
 
+            Storage::disk('uploads')->delete($design->location);
             Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
             $design->location = $name;
             $design->original_name = $original_name;
@@ -215,11 +216,13 @@ class DesignController extends ApiController
         //
         $designer_id = $request->designer_id;
         $design = Design::where('id', $id)->first();
+        $name = $design->location;
         if (empty($design)) {
             return $this->respondWithError(404, 'request_error', 'No such Design');
         }
         if ($designer_id == $design->designer_id) {
             if ($design->delete()) {
+                Storage::disk('uploads')->delete($name);
                 $design->create = [
                     'href' => '/v1/designer/design',
                     'method' => 'POST',
