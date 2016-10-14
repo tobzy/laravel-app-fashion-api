@@ -8,3 +8,5 @@ Homestead.json
 /.idea/
 composer.phar
 /public/uploads/
+/packages/
+composer.lock
