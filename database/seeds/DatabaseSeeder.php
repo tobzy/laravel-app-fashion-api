@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,6 +13,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(DesignerTableSeeder::class);
-        $this->call(UserTableSeeder::class);
+        $tables = [
+            'users',
+            'products',
+            'materials',
+            'addresses',
+            'orders',
+            'order_contents',
+            'sessions'
+        ];
+
+        foreach($tables as $table){
+            DB::table($table) -> truncate();
+        }
+
+         $this->call(UserTableSeeder::class);
+        $this->call(MaterialsTableSeeder::class);
+         $this->call(ProductsTableSeeder::class);
     }
 }

@@ -20,7 +20,7 @@ class DesignerController extends ApiController
 
         //validate the post request
         $validator = Validator::make($request->all(), [
-            'username' => 'required|unique:designers',
+            'username' => 'required|unique:designers|alpha_dash',
             'email' => 'required|unique:designers',
             'password' => 'required|min:8',
             'full_name' => 'required'
@@ -178,15 +178,9 @@ class DesignerController extends ApiController
             ];
             return $this->respondWithoutError($response);
         }
-        if($request['email'] == $designer->email){
-            $response = [
-                'msg' => 'You entered your current email',
-            ];
-            return $this->respondWithoutError($response);
-        }
         //validate the post request
         $validator = Validator::make($request->all(), [
-            'username' => 'alpha_num|unique:designers',
+            'username' => 'alpha_dash|unique:designers',
             'email' => 'unique:designers',
             'password' => 'min:8',
         ]);
@@ -210,16 +204,6 @@ class DesignerController extends ApiController
             ];
             return $this->respondWithoutError($response);
         }
-        if(!empty($request['email'])){
-            $designer->email = $request['email'];
-            $designer->update();
-            $response = [
-                'msg' => 'Email changed!.',
-                'email' => $designer->email
-            ];
-            return $this->respondWithoutError($response);
-        }
-
         if(!empty($request['full_name'])){
             $designer->full_name = $request['full_name'];
             $designer->update();

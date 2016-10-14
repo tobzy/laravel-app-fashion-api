@@ -29,8 +29,24 @@ Route::group(['prefix' => 'v1'], function () {
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::get('users', 'UsersController@authUser');
         Route::get('account', 'AccountController@account');
-        Route::put('account/address/update', 'AccountController@updateAddress');
-        Route::put('account/email/update', 'AccountController@updateEmail');
+//        Route::put('account/address/update', 'AccountController@updateAddress');
+//        Route::put('account/email/update', 'AccountController@updateEmail');
+        Route::get('account/address','AccountController@getAddresses');
+        Route::post('account/address','AccountController@newAddress');
+        Route::get('account/address/{id}','AccountController@getSingleAddress');
+        Route::put('account/address/{id}/update','AccountController@updateAddress');
+        Route::put('account/email/update','AccountController@updateEmail');
+        Route::get('account/confirm_measurement','MeasurementController@confirmMeasurement');
+
+        Route::get('user/measurement/{option}','MeasurementController@setMeasurements');
+        Route::get('account/orders','UsersController@getOrders');
+        Route::get('account/orders/{id}','AccountController@getSingleOrder');
+        Route::get('user/credit_cards','UsersController@getCreditCards');
+        Route::delete('user/credit_cards/{id}/delete','UsersController@deleteCreditCard');
+
+        Route::post('payment/initialise_transaction', 'PaymentController@getAuthUrl');
+        Route::get('payment/charge_customer','PaymentController@chargeCustomer');
+        Route::get('payment/verify_transaction', 'PaymentController@verifyTransaction');
     });
 
 
@@ -42,6 +58,7 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::get('designers', 'DesignerController@authDesigner');
         Route::post('/designer/account/update', 'DesignerController@updateProfile');
+        Route::get('design/{image}', 'ImageController@getDesign')->where('image', '^[^/]+$');
     });
 
     //signup verification and confirmation.
@@ -66,5 +83,14 @@ Route::group(['prefix' => 'v1'], function () {
 //        ]);
 //    });
 
-});
+    Route::post('user/payment/{option}/callback','MeasurementController@payment');
+
+
+    // Routes for the store and purchase process
+    Route::get('store','StoreController@getProducts');
+    Route::get('store/item','StoreController@getSingleItem');
+    Route::get('materials','StoreController@getMaterials');
+    Route::get('material','StoreController@getSingleMaterial');
+
+    });
 

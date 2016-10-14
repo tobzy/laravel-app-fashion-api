@@ -82,7 +82,7 @@ class DesignController extends ApiController
         $design->title = $request->input('title');
         $design->uuid = $uuid . '_' . $time;
         $design->description = $request->input('description');
-        $design->location = 'http://localhost:8000/uploads/' . $name;
+        $design->location = $name;
         $design->original_name = $original_name;
         $design->designer_id = $request->input('designer_id');
 //
@@ -178,7 +178,7 @@ class DesignController extends ApiController
             $name = $uuid . "_" . $time;
 
             Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
-            $design->location = 'http://localhost:8000/uploads/' . $name;
+            $design->location = $name;
             $design->original_name = $original_name;
         }
 
