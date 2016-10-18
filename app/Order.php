@@ -12,7 +12,8 @@ class Order extends Model
         'status',
         'payment_method',
         'delivery_add_id',
-        'left_over_choice'
+        'left_over_choice',
+        'total_paid'
     ];
     
     public function user(){

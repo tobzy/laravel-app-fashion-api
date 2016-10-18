@@ -36,8 +36,11 @@ Route::group(['prefix' => 'v1'], function() {
         Route::put('account/address/{id}/update','AccountController@updateAddress');
         Route::put('account/email/update','AccountController@updateEmail');
         Route::get('account/confirm_measurement','MeasurementController@confirmMeasurement');
+        Route::get('account/measurements', 'MeasurementController@getMeasurements');
+        Route::put('account/measurements', 'MeasurementController@updateMeasurements');
 
         Route::get('user/measurement/{option}','MeasurementController@setMeasurements');
+
         Route::get('account/orders','UsersController@getOrders');
         Route::get('account/orders/{id}','AccountController@getSingleOrder');
         Route::get('user/credit_cards','UsersController@getCreditCards');
@@ -48,7 +51,11 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('payment/verify_transaction', 'PaymentController@verifyTransaction');
     });
 
+
+    Route::get('payment/shipping','PaymentController@getShippingPrice');
     Route::post('user/payment/{option}/callback','MeasurementController@payment');
+
+    Route::get('fitter/confirmation','MeasurementController@confirmFitter');
 
 
     // Routes for the store and purchase process

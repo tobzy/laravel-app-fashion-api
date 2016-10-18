@@ -25,6 +25,12 @@ return[
      * */
     'ssl_cert' => '',
 
+    'currency' => 'NGN',
+
+    'shipping' => 1500,
+
+    'tax' => 0,
+
     'paystark' => [
         'secrete_key'=>'',
         'public_key'=>'',

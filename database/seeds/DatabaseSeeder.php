@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             'addresses',
             'orders',
             'order_contents',
-            'sessions'
+            'sessions',
+            'fitters',
+            'measurements'
         ];
 
         foreach($tables as $table){
@@ -29,6 +31,7 @@ class DatabaseSeeder extends Seeder
          $this->call(UserTableSeeder::class);
         $this->call(MaterialsTableSeeder::class);
          $this->call(ProductsTableSeeder::class);
+        $this->call(FittersTableSeeder::class);
 
     }
 }

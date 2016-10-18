@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Session;
-use App\FitterUser;
+use App\Fitter;
 use App\Measurement;
 use Illuminate\Http\Request;
 use Payment;
@@ -30,14 +30,14 @@ class MeasurementController extends ApiController
                 break;
 
             case 'connect_fitter':
-                $personal_fitter = FitterUser::whereUserId($this->user->id)->get(['fitter_id']);
+                $personal_fitter = $this->user->fitter_id;
 
                 Session::create([
                     'user_id' => $this->user->id,
                     /*if the personal fitter hasn't been set yet
                     insert just the users id and leave the fitter column
                     blank*/
-                    'fitter_id' => $personal_fitter==null ?  $personal_fitter : null,
+                    'fitter_id' => $personal_fitter!=null ?  $personal_fitter : null,
                 ]);
 
                 return $this->respondWithoutError([
@@ -45,7 +45,7 @@ class MeasurementController extends ApiController
                 ]);
 
             default :
-                return $this->respondWithError('404','option_not_available','The provided option is not supported1');
+                return $this->respondWithError('404','option_not_available','The provided option is not supported');
         }
     }
 
@@ -69,6 +69,47 @@ class MeasurementController extends ApiController
 
         return $this->respondWithoutError([
             'hasMeasurement' => false,
+        ]);
+    }
+
+    public function confirmFitter(Request $request){
+        $fitters = Fitter::whereCity($request->input('city'))->first();
+
+        if($fitters){
+            return $this->respondWithoutError([
+                'confirmation' => true,
+                'message' => 'Fitter present in city',
+            ]);
+        }
+
+        return $this->respondWithoutError([
+            'confirmation' => false,
+            'message' => 'Fitter not present in city',
+        ]);
+    }
+
+    public function getMeasurements(){
+        $measurements = $this->user->measurement;
+
+        return $this->respondWithoutError([
+            'measurements' => $measurements,
+        ]);
+    }
+
+    public function updateMeasurements(Request $request){
+        $measurements = $this->user->measurement;
+
+        $measurements -> arm = $request->input('arm');
+        $measurements -> waist = $request->input('waist');
+        $measurements -> burst = $request->input('burst');
+        $measurements -> leg = $request->input('leg');
+        $measurements -> neck = $request->input('neck');
+
+        $measurements -> save();
+
+        return $this->respondWithoutError([
+            'updated' => true,
+            'measurements' => $measurements
         ]);
     }
 }

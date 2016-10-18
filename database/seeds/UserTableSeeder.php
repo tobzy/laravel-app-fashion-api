@@ -43,6 +43,15 @@ class UserTableSeeder extends Seeder {
             'phone_no' => $faker->phoneNumber
         ]);
 
+        App\Measurement::create([
+            'user_id' => $user->id,
+            'arm' => 23.4,
+            'waist' => 32.2,
+            'burst' => 30.1,
+            'leg' => 34.0,
+            'neck' => 16.9,
+        ]);
+
         //create general users for the rest of the process
         for ($i = 0; $i < 20; $i++) {
             $user = App\User::create([
@@ -66,14 +75,22 @@ class UserTableSeeder extends Seeder {
 
             ]);
             App\Address::create([
-            'user_id' => $user->id,
-            'street_add' => $faker->streetAddress,
-            'city' => $faker->city,
-            'state' => 'ibadan',
-            'type' => 'Work',
-            'country' => $faker->country,
+                'user_id' => $user->id,
+                'street_add' => $faker->streetAddress,
+                'city' => $faker->city,
+                'state' => 'ibadan',
+                'type' => 'Work',
+                'country' => $faker->country,
                 'phone_no' => $faker->phoneNumber
-        ]);
+            ]);
+            App\Measurement::create([
+                'user_id' => $user->id,
+                'arm' => 23.4,
+                'waist' => 32.2,
+                'burst' => 30.1,
+                'leg' => 34.0,
+                'neck' => 16.9,
+            ]);
         }
     }
 
