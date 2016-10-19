@@ -15,4 +15,7 @@ class Design extends Model
     public function orders(){
         return $this->hasMany('App\Order');
     }
+    public function additional_designs(){
+        return $this->hasMany('App\AdditionalDesigns');
+    }
 }

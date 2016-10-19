@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdditionalDesigns;
 use App\Design;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,7 @@ class DesignController extends ApiController
     public function index(Request $request)
     {
         $id = $request->designer_id;
-        $designs = Design::where('designer_id', $id)->orderBy('id', 'desc')->paginate(8);
+        $designs = Design::with('additional_designs')->where('designer_id', $id)->orderBy('id', 'desc')->paginate(8);
         if (count($designs) > 0) {
             foreach ($designs as $design) {
                 $design->view_design = [
@@ -64,29 +65,43 @@ class DesignController extends ApiController
             return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
         }
 
-//        $ext = $request->file('file')->getClientOriginalExtension();
-        $original_name = $request->file('file')->getClientOriginalName();
-//        $mimetype = $request->file('file')->getMimeType();
 
+        $request['designer_id'] = $request->designer_id;
+        $original_name = $request->file("file1")->getClientOriginalName();
         $time = new Carbon();
         $time = $time->timestamp;
         $uuid = Uuid::uuid1();
         $name = $uuid . "_" . $time;
+        Storage::disk('uploads')->put($name, file_get_contents($request->file("file1")->getRealPath()));
 
-        Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
-//
-        $request['designer_id'] = $request->designer_id;
-//
         $design = new Design();
-//
         $design->title = $request->input('title');
         $design->uuid = $uuid . '_' . $time;
         $design->description = $request->input('description');
         $design->location = $name;
         $design->original_name = $original_name;
         $design->designer_id = $request->input('designer_id');
+        $saved = $design->save();
+
+        for($i = 2;$i<5;$i++){
+            $original_name = $request->file("file$i")->getClientOriginalName();
+            $time = new Carbon();
+            $time = $time->timestamp;
+            $uuid = Uuid::uuid1();
+            $name = $uuid . "_" . $time;
+            Storage::disk('uploads')->put($name, file_get_contents($request->file("file$i")->getRealPath()));
+
+            $add_design = new AdditionalDesigns();
+            $add_design->uuid = $uuid.'_'.$time;
+            $add_design->location = $name;
+            $add_design->original_name = $original_name;
+            $design->additional_designs()->save($add_design);
+        }
+
+
+
 //
-        if ($design->save()) {
+        if ($saved) {
             $design->view_design = [
                 'href' => '/v1/designer/design/' . $design->id,
                 'method' => 'GET'
@@ -221,6 +236,7 @@ class DesignController extends ApiController
             return $this->respondWithError(404, 'request_error', 'No such Design');
         }
         if ($designer_id == $design->designer_id) {
+            $design->additional_designs()->delete();
             if ($design->delete()) {
                 Storage::disk('uploads')->delete($name);
                 $design->create = [
