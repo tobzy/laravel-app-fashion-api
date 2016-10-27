@@ -176,6 +176,7 @@ class DesignController extends ApiController
         $designer_id = $request->input('designer_id');
 
         $design = Design::where('id', $id)->first();
+        $add_design = $design->additional_designs;
 
         if (empty($design)) {
             return $this->respondWithError(401, 'request_error', 'No such Design!');
@@ -184,19 +185,74 @@ class DesignController extends ApiController
             return $this->respondWithError(401, 'request_error', 'Designer didn\'t make this design, Update not successful');
         }
 
-        if ($request->file('file')) {
-            $original_name = $request->file('file')->getClientOriginalName();
+        if ($request->file('file1')->getClientOriginalName()) {
+            $original_name = $request->file('file1')->getClientOriginalName();
 
-            $time = new Carbon();
-            $time = $time->timestamp;
-            $uuid = Uuid::uuid1();
-            $name = $uuid . "_" . $time;
+            if($original_name){
+                $time = new Carbon();
+                $time = $time->timestamp;
+                $uuid = Uuid::uuid1();
+                $name = $uuid . "_" . $time;
 
-            Storage::disk('uploads')->delete($design->location);
-            Storage::disk('uploads')->put($name, file_get_contents($request->file('file')->getRealPath()));
-            $design->location = $name;
-            $design->original_name = $original_name;
+                Storage::disk('uploads')->delete($design->location);
+                Storage::disk('uploads')->put($name, file_get_contents($request->file('file1')->getRealPath()));
+                $design->location = $name;
+                $design->original_name = $original_name;
+            }
+
         }
+        if ($request->file('file2')->getClientOriginalName()) {
+            $original_name = $request->file('file2')->getClientOriginalName();
+
+            if($original_name){
+                $time = new Carbon();
+                $time = $time->timestamp;
+                $uuid = Uuid::uuid1();
+                $name = $uuid . "_" . $time;
+
+                Storage::disk('uploads')->delete($add_design[0]->location);
+                Storage::disk('uploads')->put($name, file_get_contents($request->file('file2')->getRealPath()));
+                $add_design[0]->location = $name;
+                $add_design[0]->original_name = $original_name;
+                $add_design[0]->save();
+            }
+
+        }
+        if ($request->file('file3')->getClientOriginalName()) {
+            $original_name = $request->file('file3')->getClientOriginalName();
+
+            if($original_name){
+                $time = new Carbon();
+                $time = $time->timestamp;
+                $uuid = Uuid::uuid1();
+                $name = $uuid . "_" . $time;
+
+                Storage::disk('uploads')->delete($add_design[1]->location);
+                Storage::disk('uploads')->put($name, file_get_contents($request->file('file3')->getRealPath()));
+                $add_design[1]->location = $name;
+                $add_design[1]->original_name = $original_name;
+                $add_design[1]->save();
+            }
+
+        }
+        if ($request->file('file4')->getClientOriginalName()) {
+            $original_name = $request->file('file4')->getClientOriginalName();
+
+            if($original_name){
+                $time = new Carbon();
+                $time = $time->timestamp;
+                $uuid = Uuid::uuid1();
+                $name = $uuid . "_" . $time;
+
+                Storage::disk('uploads')->delete($add_design[2]->location);
+                Storage::disk('uploads')->put($name, file_get_contents($request->file('file4')->getRealPath()));
+                $add_design[2]->location = $name;
+                $add_design[2]->original_name = $original_name;
+                $add_design[2]->save();
+            }
+
+        }
+
 
 
         $design->title = $request->input('title');
@@ -204,7 +260,7 @@ class DesignController extends ApiController
 
         $design->designer_id = $request->input('designer_id');
 
-
+//        $add_design->update();
         if ($design->update()) {
             $design->view_design = [
                 'href' => '/v1/designer/design/' . $design->id,
@@ -232,6 +288,9 @@ class DesignController extends ApiController
         $designer_id = $request->designer_id;
         $design = Design::where('id', $id)->first();
         $name = $design->location;
+        $name1 = $design->additional_designs[0]->location;
+        $name2 = $design->additional_designs[1]->location;
+        $name3 = $design->additional_designs[2]->location;
         if (empty($design)) {
             return $this->respondWithError(404, 'request_error', 'No such Design');
         }
@@ -239,6 +298,9 @@ class DesignController extends ApiController
             $design->additional_designs()->delete();
             if ($design->delete()) {
                 Storage::disk('uploads')->delete($name);
+                Storage::disk('uploads')->delete($name1);
+                Storage::disk('uploads')->delete($name2);
+                Storage::disk('uploads')->delete($name3);
                 $design->create = [
                     'href' => '/v1/designer/design',
                     'method' => 'POST',

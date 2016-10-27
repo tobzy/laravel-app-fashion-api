@@ -10,7 +10,7 @@ class ImageController extends Controller
 {
     public function _construct()
     {
-        $this->middleware('img.src');
+//        $this->middleware('img.src');
     }
 
     public function getDesign(Request $request,$image)

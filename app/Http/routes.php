@@ -58,7 +58,8 @@ Route::group(['prefix' => 'v1'], function () {
 
         Route::get('designers', 'DesignerController@authDesigner');
         Route::post('/designer/account/update', 'DesignerController@updateProfile');
-        Route::get('design/{image}', 'ImageController@getDesign')->where('image', '^[^/]+$');
+        Route::get('design/{image}', 'ImageController@getDesign')->where('image', '^[^/]+$')->middleware('img.src');
+
     });
 
     //signup verification and confirmation.
