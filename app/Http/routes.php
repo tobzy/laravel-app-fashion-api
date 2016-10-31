@@ -76,13 +76,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/designer/signin', [
         'uses' => 'DesignerController@signin'
     ]);
-//    Route::post('test', function () {
-//        $token = JWTAuth::getToken();
-//        $a = $token->get();
-//        return response()->json([
-//            'token' => $a
-//        ]);
-//    });
+
+    Route::post('/designer/search','DesignerController@searchDesigners');
+    Route::get('/designer', 'DesignerController@getDesigner');
 
     Route::post('user/payment/{option}/callback','MeasurementController@payment');
 

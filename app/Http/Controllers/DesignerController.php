@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use JWTAuth;
@@ -86,9 +87,7 @@ class DesignerController extends ApiController
                 'message' => $validator->errors(),
             ];
             return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
-//            return response()->json(['errors' => $error]);
         }
-        //
 
 
 
@@ -123,13 +122,11 @@ class DesignerController extends ApiController
 
     public function authDesigner(Request $request)
     {
+        $designer = Designer::where('id',$request->designer_id)->first();
 
-
-            $designer = Designer::where('id',$request->designer_id)->first();
-
-            if(!empty($designer)){
-                return $this->respondWithoutError($this->transformDesignerToJson($designer));
-            }
+        if(!empty($designer)){
+            return $this->respondWithoutError($this->transformDesignerToJson($designer));
+        }
 
     }
 
@@ -227,5 +224,41 @@ class DesignerController extends ApiController
         ];
         return $this->respondWithoutError($response);
 
+    }
+
+    public function searchDesigners(Request $request)
+    {
+        $designa = $request->input('designer');
+        ///old SQL. not suitable for search function.
+//        $designers = Designer::where('username','like',"%$designa%")->orWhere('email','like',"%$designa%")->orWhere('full_name','like',"%$designa%")->get();
+
+
+        $results = DB::select('select * from designers where username REGEXP :user OR email REGEXP :email OR full_name REGEXP :name', ['user' => "[[:<:]]".$designa."[[:>:]]", 'email'=>"[[:<:]]".$designa."[[:>:]]", 'name'=>"[[:<:]]".$designa."[[:>:]]"]);
+        if(count($results) > 0){
+            $response = [
+                'msg' => 'List of Designers',
+                'designers' => $results
+            ];
+
+            return $this->respondWithoutError($response);
+        }
+        return $this->respondWithError(404, 'request_error', 'No Hits match your search query');
+
+    }
+
+    public function getDesigner(Request $request)
+    {
+        $id = $request->input('id');
+        $designer = Designer::find($id);
+
+        if($designer){
+            $response = [
+                'msg' => "La Designer",
+                "designer" => $designer
+            ];
+
+            return $this->respondWithoutError($response);
+        }
+        return $this->respondWithError(404, 'request_error','No such designer exists');
     }
 }
