@@ -35,18 +35,6 @@ class DesignViewAuthenticate
             return $next($request);
         }
 
-
-//        if (!empty($token)) {
-//            $la_token = $token->get();
-//            $designer = Designer::where('token',$la_token)->first();
-//            if(!empty($designer)){
-//                $request->designer_id = $designer->id;
-//                return $next($request);
-//            }
-//            return response()->json([
-//                'designer' => "No Designer with the token",
-//            ]);
-//        }
         return response()->json([
             'error' => 'No token provided'
         ]);

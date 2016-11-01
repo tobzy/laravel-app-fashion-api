@@ -185,7 +185,7 @@ class DesignController extends ApiController
             return $this->respondWithError(401, 'request_error', 'Designer didn\'t make this design, Update not successful');
         }
 
-        if ($request->file('file1')->getClientOriginalName()) {
+        if ($request->file('file1')) {
             $original_name = $request->file('file1')->getClientOriginalName();
 
             if($original_name){
@@ -201,7 +201,7 @@ class DesignController extends ApiController
             }
 
         }
-        if ($request->file('file2')->getClientOriginalName()) {
+        if ($request->file('file2')) {
             $original_name = $request->file('file2')->getClientOriginalName();
 
             if($original_name){
@@ -218,7 +218,7 @@ class DesignController extends ApiController
             }
 
         }
-        if ($request->file('file3')->getClientOriginalName()) {
+        if ($request->file('file3')) {
             $original_name = $request->file('file3')->getClientOriginalName();
 
             if($original_name){
@@ -235,7 +235,7 @@ class DesignController extends ApiController
             }
 
         }
-        if ($request->file('file4')->getClientOriginalName()) {
+        if ($request->file('file4')) {
             $original_name = $request->file('file4')->getClientOriginalName();
 
             if($original_name){
@@ -252,7 +252,6 @@ class DesignController extends ApiController
             }
 
         }
-
 
 
         $design->title = $request->input('title');
