@@ -160,12 +160,12 @@ class PaymentController extends ApiController
             Log::info('Product id '.$item->id);
             Log::info('Material id '.$item -> options -> material -> material_id);
 
-            // add the products price
-            $total += $product -> price;
+            // add the products price times the quantity of the product
+            $total += ($product -> price * $item->qty);
             Log::info('Product Cost'.$total);
 
             // add the material price per the amount of yards for the product
-            $total += ($material->price * $product->no_of_yards);
+            $total += ($material->price * ($product->no_of_yards * $item -> qty));
             Log::info('Material Cost '.$material->price);
             Log::info('No of yards '.$product->no_of_yards);
 

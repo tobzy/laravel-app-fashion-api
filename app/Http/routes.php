@@ -23,6 +23,9 @@ Route::group(['prefix' => 'v1'], function() {
     Route::post('auth/create', 'Auth\AuthController@create');
     Route::get('auth/activation/{token}', 'Auth\AuthController@activate')->name('user.activate');
 
+    Route::put('auth/password_reset_email','Auth\PasswordController@sendResetPasswordEmail');
+    Route::get('auth/password_reset','Auth\PasswordController@resetPassword')->name('user.password.reset');
+
     Route::get('auth/social', 'SocialAuthController@authSocial');
 
 
@@ -60,9 +63,11 @@ Route::group(['prefix' => 'v1'], function() {
 
     // Routes for the store and purchase process
     Route::get('store','StoreController@getProducts');
+    Route::get('store/new_items','StoreController@getNewProducts');
     Route::get('store/item','StoreController@getSingleItem');
     Route::get('materials','StoreController@getMaterials');
     Route::get('material','StoreController@getSingleMaterial');
+    Route::get('material/new_materials','StoreController@getNewMaterials');
 
 
 });

@@ -16,7 +16,7 @@ class Product extends Model
         return $this->hasMany('App\OrderContent');
     }
     
-    public function image(){
+    public function images(){
         return $this->hasMany('App\ProductImage');
     }
 
@@ -27,5 +27,10 @@ class Product extends Model
     public function default_material_with_cat($id){
         $material = Material::with('category')->whereId($id)->first();
         return $material;
+    }
+
+    public function designer(){
+        // TODO be sure a designer model does exist before calling this action
+        return $this -> belongsTo('App\Designer');
     }
 }

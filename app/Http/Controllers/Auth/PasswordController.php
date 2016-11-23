@@ -2,31 +2,94 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use App;
+use App\Http\Controllers\ApiController;
+use Illuminate\Http\Request;
+use App\Services\PasswordServices;
 
-class PasswordController extends Controller
+class PasswordController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
+    | This controller is responsible for handling password reset requests.
+    |
     |
     */
 
-    use ResetsPasswords;
+    protected $passwordServices;
 
     /**
-     * Create a new password controller instance.
-     *
-     * @return void
+     * PasswordController constructor.
+     * @param PasswordServices $passwordServices
      */
-    public function __construct()
+    public function __construct(PasswordServices $passwordServices)
     {
-        $this->middleware('guest');
+        $this->passwordServices = $passwordServices;
+
+        //parent::__construct();
+    }
+
+
+    /**
+     * Authenticated user making call to change password.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changePassword(Request $request)
+    {
+        $uuid = $request ->input('uuid');
+        $email = $request ->input('email');
+        $current_password = $request -> input('current_password');
+        $new_password = $request->input('new_password');
+
+        $user = App\User::whereEmail($email)
+            ->whereUuid($uuid)
+            ->wherePassword(bcrypt($current_password))
+            ->first();
+
+        if($user){
+            $user -> password = bcrypt($new_password);
+            $user -> save();
+
+            return $this->respondWithoutError([
+                'user' => $user
+            ]);
+        }
+
+        return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
+
+    }
+
+    public function sendResetPasswordEmail(Request $request){
+        $user = App\User::whereEmail($request->input('email'))->first();
+
+        if($user){
+            // send email to the user for password reset
+            $this->passwordServices->sendPasswordResetMail($user);
+
+            return $this->respondWithoutError([
+                'status' => true,
+                'message' => 'An email has been sent to your mailbox, follow the instructions to reset your password.'
+            ]);
+        }
+
+        return $this->respondWithError(
+            'user_not_found','user_not_found','The email address does not exist'
+        );
+    }
+
+    /**
+     * non-authenticated user making call to change password.
+     *
+     * Forgot Password
+     *
+     * @param Request $request
+     */
+    public function resetPassword(Request $request){
+
     }
 }

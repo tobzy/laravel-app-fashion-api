@@ -29,12 +29,13 @@ class Activation extends Model {
      * @var boolean
      */
     public $timestamps = false;
-    
+
 
     /**
      * generates a token from hash and sha.
      *
      * @var none
+     * @return string
      */
     
     protected function getToken() {
@@ -45,6 +46,7 @@ class Activation extends Model {
      * creates an activation for the given user.
      *
      * @var User
+     * @return string
      */
     public function createActivation($user) {
 
@@ -60,6 +62,7 @@ class Activation extends Model {
      * used to regenerate token incase user doesnt get initial token.
      *
      * @var User
+     * @return string
      */
     private function regenerateToken($user)
     {
@@ -71,11 +74,12 @@ class Activation extends Model {
         ]);
         return $token;
     }
-    
+
     /**
      * used to assign a generated token to a user.
      *
      * @var User
+     * @return string
      */
     private function createToken($user)
     {

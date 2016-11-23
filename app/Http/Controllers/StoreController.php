@@ -19,17 +19,51 @@ class StoreController extends ApiController
     public function getProducts(Request $request){
 
         $cat = $request->input('category');
+        $filter = $request ->input('filter');
 
         if(!(isset($cat) && ($cat=='men' || $cat=='women'))){
            return $this->respondWithError('Error','category_error','The Selected Category doest exist');
         }
 
-        $products = App\Product::whereCategory($cat)->paginate(9);
-        $products->appends(['cat' => 'men'])->links();
+        $url_query = [
+            'cat' => $cat,
+        ];
+
+        if(isset($filter) && $filter){
+            $min_price = $request->input('filter_min_price');
+            $max_price = $request->input('filter_max_price');
+
+            $products = App\Product::whereCategory($cat)
+                ->where('price','>=',$min_price)
+                ->where('price','<=',$max_price)
+                ->paginate(9);
+
+            $url_query['filter_min_price'] = $min_price;
+            $url_query['filter_max_price'] = $max_price;
+            $url_query['filter'] = true;
+
+        }else{
+
+            $products = App\Product::whereCategory($cat)->paginate(9);
+        }
+
+        $products->appends($url_query)->links();
 
         return $this->respondWithoutError([
             'products'=>$products,
             'links'=> (string)$products->links()
+        ]);
+    }
+
+    public function getNewProducts(){
+        $products = App\Product::whereCategory('men')
+            ->orWhere('category','women')
+            ->orderBy('created_at','DESC')
+            ->limit(3)
+            ->get();
+
+        return $this->respondWithoutError([
+            'new_products' => $products,
         ]);
     }
 
@@ -42,7 +76,7 @@ class StoreController extends ApiController
     public function getSingleItem(Request $request){
         $uuid = $request -> input('uuid');
 
-        $product = App\Product::whereUuid($uuid)->first();
+        $product = App\Product::with('images')->whereUuid($uuid)->first();
         if(!$product){
             return $this->respondWithError('ERR_PRD_001','item_not_existing','Sorry the item you requested for doesn\'t exist, Try again!!');
         }
@@ -61,7 +95,29 @@ class StoreController extends ApiController
      * @return \Illuminate\Http\JsonResponse
      */
     public function getMaterials(Request $request){
-        $materials = App\Material::with('category')->paginate(9);
+        $filter = $request -> input('filter');
+
+        if(isset($filter) && $filter==true){
+
+            $min_price = $request ->input('filter_min_price');
+            $max_price = $request ->input('filter_max_price');
+
+            $materials = App\Material::with('category')
+                ->where('price','>=',$min_price)
+                ->where('price', '<=', $max_price)
+                ->paginate(9);
+
+            $url_query = [];
+            $url_query['filter_min_price'] = $min_price;
+            $url_query['filter_max_price'] = $max_price;
+            $url_query['filter'] = true;
+
+            $materials->appends($url_query)->links();
+
+        }else{
+            $materials = App\Material::with('category')->paginate(9);
+        }
+
 
         return $this->respondWithoutError([
             'materials'=>$materials,
@@ -80,6 +136,17 @@ class StoreController extends ApiController
 
         return $this->respondWithoutError([
             'material' => $material,
+        ]);
+    }
+
+    public function getNewMaterials(){
+        $new_materials = App\Material::with('category')
+            ->orderBy('created_at','DESC')
+            ->limit(3)
+            ->get();
+
+        return $this->respondWithoutError([
+            'new_materials' => $new_materials
         ]);
     }
 }

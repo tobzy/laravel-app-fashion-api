@@ -20,7 +20,7 @@ class ProductsTableSeeder extends Seeder
             $count = $faker -> numberBetween(0,6);
 
             for($i = 0; $i<= $count; $i++){
-                App\Product::create([
+                $product = App\Product::create([
                     'product_name' => $material->color.' '.$material->category->name,
                     'uuid' => Uuid::uuid1(),
                     'price' => $faker -> randomFloat($nbMaxDecimal = 2,$min = 2500,$max = 10000),
@@ -30,6 +30,16 @@ class ProductsTableSeeder extends Seeder
                     'image' => 'http://localhost:8000/images/7.jpg',
                     'default_material' => $faker -> numberBetween(1,10)
                 ]);
+
+                // insert images for the the product
+                for ($j=0; $j<3; $j++){
+                    App\ProductImage::create([
+                        'product_id' => $product->id,
+                        'image' => 'http://localhost:8000/images/7.jpg',
+                        'alt_text' => 'image for '.$product->product_name
+                    ]);
+                }
+
             }
         }
     }

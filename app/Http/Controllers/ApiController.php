@@ -29,9 +29,7 @@ class ApiController extends Controller {
     protected function respondWithoutError($data) {
 
         $response = [
-            'errors' => [
-                'hasError' => false
-            ],
+            'status' => true,
             'data' => $data,
         ];
 
@@ -40,8 +38,8 @@ class ApiController extends Controller {
 
     protected function respondWithError($errorCode, $title, $errorMessage) {
         return response()->json([
+                    'status' => false,
                     'errors' => [
-                        'hasError' => true,
                         'details' => [
                             'code' => $errorCode,
                             'title' => $title,

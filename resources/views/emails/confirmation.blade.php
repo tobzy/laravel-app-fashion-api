@@ -614,12 +614,12 @@ table {
   margin: 0;
 }
 </style>
-    
+
     <title></title>
   <!--[if !mso]><!--><style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic|Lato:400,700,400italic,700italic);
 </style><link href="https://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic|Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" /><!--<![endif]--><style type="text/css">
-body{background-color:#fbfbfb}.mso h1{}.mso h1{font-family:sans-serif !important}.mso h2{}.mso h3{}.mso .layout-fixed-width td,.mso .layout-full-width td,.mso .column__background td{}.mso .btn a{}.mso .webversion,.mso .snippet,.mso .layout-email-footer td,.mso .footer__share-button p{}.mso .logo{}.mso .logo{font-family:sans-serif !important}.logo a:hover,.logo a:focus{color:#1e2e3b !important}.mso .layout-has-border{border-top:1px solid #c8c8c8;border-bottom:1px solid #c8c8c8}.mso .layout-has-bottom-border{border-bottom:1px solid #c8c8c8}.mso .border,.ie .border{background-color:#c8c8c8}@media only screen and (min-width: 620px){.wrapper h1{}.wrapper h1{font-size:26px !important;line-height:34px !important}.wrapper h2{}.wrapper h2{font-size:20px !important;line-height:28px !important}.wrapper h3{}.column,.column__background td{}}.mso h1,.ie h1{}.mso h1,.ie h1{font-size:26px 
+body{background-color:#fbfbfb}.mso h1{}.mso h1{font-family:sans-serif !important}.mso h2{}.mso h3{}.mso .layout-fixed-width td,.mso .layout-full-width td,.mso .column__background td{}.mso .btn a{}.mso .webversion,.mso .snippet,.mso .layout-email-footer td,.mso .footer__share-button p{}.mso .logo{}.mso .logo{font-family:sans-serif !important}.logo a:hover,.logo a:focus{color:#1e2e3b !important}.mso .layout-has-border{border-top:1px solid #c8c8c8;border-bottom:1px solid #c8c8c8}.mso .layout-has-bottom-border{border-bottom:1px solid #c8c8c8}.mso .border,.ie .border{background-color:#c8c8c8}@media only screen and (min-width: 620px){.wrapper h1{}.wrapper h1{font-size:26px !important;line-height:34px !important}.wrapper h2{}.wrapper h2{font-size:20px !important;line-height:28px !important}.wrapper h3{}.column,.column__background td{}}.mso h1,.ie h1{}.mso h1,.ie h1{font-size:26px
 !important;line-height:34px !important}.mso h2,.ie h2{}.mso h2,.ie h2{font-size:20px !important;line-height:28px !important}.mso h3,.ie h3{}.mso .column,.ie .column,.mso .column__background td,.ie .column__background td{}
 </style><meta name="robots" content="noindex,nofollow" />
 <meta property="og:title" content="My First Campaign" />
@@ -635,7 +635,7 @@ body{background-color:#fbfbfb}.mso h1{}.mso h1{font-family:sans-serif !important
         <div style="border-collapse: collapse;display: table;">
         <!--[if (mso)|(IE)]><table align="center" class="preheader" cellpadding="0" cellspacing="0"><tr><td style="width: 280px" valign="top"><![endif]-->
           <div class="snippet" style="Float: left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 140px; width: 140px;width: calc(14000vw - 89600px);padding: 10px 0 5px 0;color: #999;font-family: Georgia,serif;">
-            
+
           </div>
         <!--[if (mso)|(IE)]></td><td style="width: 280px" valign="top"><![endif]-->
           <div class="webversion" style="Float: left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 139px; width: 139px;width: calc(14100vw - 90242px);padding: 10px 0 5px 0;text-align: right;color: #999;font-family: Georgia,serif;">

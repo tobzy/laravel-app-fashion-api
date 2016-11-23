@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             'order_contents',
             'sessions',
             'fitters',
-            'measurements'
+            'measurements',
+            'product_images'
         ];
 
         foreach($tables as $table){
