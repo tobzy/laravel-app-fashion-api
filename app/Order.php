@@ -24,6 +24,11 @@ class Order extends Model
         return $this->hasMany('App\OrderContent');
     }
 
+    public function design()
+    {
+        return $this->belongsTo('App\Design');
+    }
+
     public function address(){
         return $this->belongsTo('App\Address','delivery_add_id');
     }

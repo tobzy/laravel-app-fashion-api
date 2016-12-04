@@ -5,3 +5,8 @@ Homestead.yaml
 Homestead.json
 .env
 /nbproject/private/
+/.idea/
+composer.phar
+/public/uploads/
+/packages/
+composer.lock

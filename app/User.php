@@ -37,9 +37,13 @@ class User extends Authenticatable
     public function activation(){
         return $this ->hasOne('App\Activation');
     }
-    
+
     public function address(){
         return $this->hasMany('App\Address');
+    }
+    
+    public function design(){
+        return $this->hasMany('App\Design');
     }
     
     public function order(){

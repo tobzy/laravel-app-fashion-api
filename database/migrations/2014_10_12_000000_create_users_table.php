@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->integer('fitter_id')->nullable();
             $table->rememberToken();
+            $table->boolean('designer')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
