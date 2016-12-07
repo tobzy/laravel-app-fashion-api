@@ -92,7 +92,7 @@ class AuthController extends Controller
             ]
         ];
 
-        return redirect('http://localhost:8000/account/confirmed'); //response()->json($response);
+        return redirect('http://nattivv.com/account/confirmed'); //response()->json($response);
     }
 
     /**
