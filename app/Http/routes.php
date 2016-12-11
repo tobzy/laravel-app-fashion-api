@@ -69,5 +69,35 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('material','StoreController@getSingleMaterial');
     Route::get('material/new_materials','StoreController@getNewMaterials');
 
+    Route::group(['middleware' => ['designer.auth']], function () {
+        //the design resourse route to handle all design routes
+        Route::resource('/designer/design', 'DesignController', [
+            'except' => ['edit', 'create']
+        ]);
+
+        Route::get('designers', 'DesignerController@authDesigner');
+        Route::post('/designer/account/update', 'DesignerController@updateProfile');
+        Route::get('design/{image}', 'ImageController@getDesign')->where('image', '^[^/]+$')->middleware('img.src');
+
+    });
+
+    //signup verification and confirmation.
+    Route::get('register/verify/{confirmationCode}', [
+        'as' => 'confirmation_path',
+        'uses' => 'DesignerController@confirm'
+    ]);
+
+    //the designer registration store post to database
+    Route::post('/designer', [
+        'uses' => 'DesignerController@store'
+    ]);
+    //the designer sign in route...
+    Route::post('/designer/signin', [
+        'uses' => 'DesignerController@signin'
+    ]);
+
+    Route::post('/designer/search','DesignerController@searchDesigners');
+    Route::get('/designer', 'DesignerController@getDesigner');
+
 
 });
