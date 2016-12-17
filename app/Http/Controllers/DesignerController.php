@@ -29,10 +29,6 @@ class DesignerController extends ApiController
 
         //if validator fails return json error responce
         if ($validator->fails()) {
-            $error = [
-                'hasError' => true,
-                'message' => $validator->errors(),
-            ];
             return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
         }
         //
@@ -82,10 +78,6 @@ class DesignerController extends ApiController
 
         //if validator fails return json error responce
         if ($validator->fails()) {
-            $error = [
-                'hasError' => true,
-                'message' => $validator->errors(),
-            ];
             return $this->respondWithError(404, 'validation_error', $validator->errors()->toJson());
         }
 
