@@ -91,6 +91,18 @@ class MeasurementController extends ApiController
     public function getMeasurements(){
         $measurements = $this->user->measurement;
 
+        if(!$measurements){
+            return $this->respondWithoutError([
+                'measurements' => [
+                    'arm' => 0,
+                    'waist' => 0,
+                    'burst' => 0,
+                    'leg' => 0,
+                    'neck' => 0,
+                ]
+            ]);
+        }
+
         return $this->respondWithoutError([
             'measurements' => $measurements,
         ]);

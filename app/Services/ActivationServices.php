@@ -55,13 +55,13 @@ class ActivationServices {
     public function activateUser($token) {
         $activation = $this->activation->getActivationByToken($token);
 
-        if ($activation === null) {
+        if ($activation == null) {
             return null;
         }
 
         $user = App\User::find($activation->user_id);
 
-        $user->confirmed = true;
+        $user->confirmation = true;
 
         $user->save();
 
