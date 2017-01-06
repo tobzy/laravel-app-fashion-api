@@ -58,6 +58,7 @@ class UsersController extends ApiController
             'last_name' => (string)$user -> last_name,
             'email' => (string)$user -> email,
             'confirmed' => (boolean)$user -> confirmation,
+            'measurement' => $user -> measurement != NULL ,
         ]];
     }
 }

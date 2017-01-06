@@ -11,7 +11,7 @@ use App;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class AuthController extends App\Http\Controllers\ApiController
 {
 
     protected $activationService;
@@ -57,42 +57,33 @@ class AuthController extends Controller
         //send an activation email to the users email
         $this->activationService->sendActivationMail($user);
 
-        $response = [
-            'errors' => [
-                'hasError' => (bool)false
-            ],
-            'data' => [
-                'code' => 200,
-                'message' => 'We sent you a confirmation email. Check your email to activate your account'
-            ]
-        ];
-        return response()->json($response);
+        return $this->respondWithoutError([
+            'message' => 'We sent you a confirmation email. Check your email to activate your account'
+        ]);
     }
 
     /**
      * API Login, on success return JWT Auth token
      *
-     * @param token value
+     * @param value $token
      * @return \Illuminate\Http\JsonResponse
+     * @internal param value $token
      */
     public function activate($token)
     {
         if ($token === null) {
             return;
         }
-        $this->activationService->activateUser($token);
+        $user = $this->activationService->activateUser($token);
+        if($user == null){
 
-        $response = [
-            'errors' => [
-                'hasError' => false
-            ],
-            'data' => [
-                'code' => 200,
-                'message' => 'Your account has been successfully activated. you can login.'
-            ]
-        ];
+            //todo change to the nattivv url
+            return redirect('http://localhost:8000/?confirmed=0');
+            //return;
+        }
 
-        return redirect('http://nattivv.com/account/confirmed'); //response()->json($response);
+        //todo change to the nattivv url
+        return redirect('http://localhost:8000/?confirmed=1');
     }
 
     /**
@@ -111,34 +102,20 @@ class AuthController extends Controller
             // attempt to verify the credentials and create a token for the user
 //            $jw = new JWTAuth();
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['errors' => [
-                    'hasError' => true,
-                    'details' => [
-                        'code' => 'ERR-AUTH-0001',
-                        'title' => 'Invalid Credentials',
-                        'message' => 'Username Or Password Is Incorrect',
-                    ]
-                ]], 200);
+                return $this->respondWithError('ERR-AUTH-001','Invalid Credentials','Username Or Password Is Incorrect');
+
             }
 
         } catch (JWTException $e) {
             // something went wrong whilst attempting to encode the token
-            return response()->json(['errors' => [
-                'hasError' => true,
-                'details' => [
-                    'code' => 'ERR-AUTH-0002',
-                    'title' => 'token_error',
-                    'message' => [$e->getMessage()],
-                ]]], 200);
+            return $this->respondWithError('ERR-AUTH-002','token_error',$e->getMessage());
+
         }
 
         // all good so return the token
-        return response()->json(['errors' => [
-            'hasError' => false
-        ],
-            'data' => [
-                'token' => $token
-            ]]);
+        return $this->respondWithoutError([
+            'token' => $token
+        ]);
     }
 
     /**
