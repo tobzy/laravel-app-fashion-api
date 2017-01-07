@@ -143,7 +143,7 @@ class DesignerController extends ApiController
             'msg' => 'You have successfully verified your account.',
             'designer' => $designer->full_name,
         ];
-        return redirect('http:nattivv.com/designer/login?confirmed=1');
+        return Redirect::to('http://www.nattivv.com/designer/login?confirmed=1');
 //        return $this->respondWithoutError($response);
     }
     private function transformDesignerToJson($designer){
