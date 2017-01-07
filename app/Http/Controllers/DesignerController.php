@@ -54,9 +54,9 @@ class DesignerController extends ApiController
             ];
 
             Mail::send('emails.designer_confirmation',['confirmation_code'=>$confirmation_code],function ($message) use ($email, $designa){
-                $message->to('admin@nattiv.com', 'Admin');
-                $message->from($email, $designa);
-                $message->subject('Thanks..');
+                $message->to($email, $designa);
+                $message->from('admin@nattiv.com', 'Admin');
+                $message->subject('Thank you for registering');
             });
             $response = [
                 'msg' => 'Check your Email for Confirmation Link',
@@ -143,8 +143,8 @@ class DesignerController extends ApiController
             'msg' => 'You have successfully verified your account.',
             'designer' => $designer->full_name,
         ];
-
-        return $this->respondWithoutError($response);
+        return redirect('http://www.nattivv.com/designer/login?confirmed=1');
+//        return $this->respondWithoutError($response);
     }
     private function transformDesignerToJson($designer){
         return ['designer' =>[
