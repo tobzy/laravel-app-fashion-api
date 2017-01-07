@@ -44,6 +44,8 @@ class PaymentController extends ApiController
                 'authorization_url' => $transaction ->data-> authorization_url,
                 'access_code'=> $transaction -> data -> access_code
             ]);
+
+        $this->respondWithError('404','transaction_error','try again');
     }
 
     /**
@@ -87,7 +89,7 @@ class PaymentController extends ApiController
         }
         return $this->respondWithoutError([
             'verified' => false,
-            'message' => 'Sorry an error occured and your transaction couldn\'t be completed'
+            'message' => 'Sorry an error occurred and your transaction couldn\'t be completed'
         ]);
     }
 

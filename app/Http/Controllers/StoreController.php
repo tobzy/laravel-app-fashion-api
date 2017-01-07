@@ -6,6 +6,7 @@ use App;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Storage;
 
 class StoreController extends ApiController
 {
@@ -53,6 +54,19 @@ class StoreController extends ApiController
             'products'=>$products,
             'links'=> (string)$products->links()
         ]);
+    }
+
+    public function getProductImage($uuid){
+        /* todo for production, each product has its
+         * images in its own folder with id as name,
+         * when, retrieving, retrieve from "images/products/{id}/image_name"
+        */
+        $product = App\Product::whereUuid($uuid)->first();
+
+        if(!$product){
+            return $this->respondWithError([404,'not_found','The product does not exist']);
+        }
+        return Storage::get('images/products/'.$product->image);
     }
 
     public function getNewProducts(){
@@ -137,6 +151,10 @@ class StoreController extends ApiController
         return $this->respondWithoutError([
             'material' => $material,
         ]);
+    }
+
+    public function getMaterialImage(){
+
     }
 
     public function getNewMaterials(){
