@@ -30,7 +30,6 @@ class Product extends Model
     }
 
     public function designer(){
-        // TODO be sure a designer model does exist before calling this action
         return $this -> belongsTo('App\Designer');
     }
 }
