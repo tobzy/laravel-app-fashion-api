@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(DesignerTableSeeder::class);
+        //todo uncomment this line
+         //$this->call(DesignerTableSeeder::class);
         $tables = [
             'users',
             'products',

@@ -78,12 +78,12 @@ class AuthController extends App\Http\Controllers\ApiController
         if($user == null){
 
             //todo change to the nattivv url
-            return redirect('http://localhost:8000/?confirmed=0');
+            return redirect('http://nattivv.com/?confirmed=0');
             //return;
         }
 
         //todo change to the nattivv url
-        return redirect('http://localhost:8000/?confirmed=1');
+        return redirect('http://nattivv.com/?confirmed=1');
     }
 
     /**
