@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60ac3d4b-3b78-45ed-ba5e-d02386b2e664" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/storage/app/images/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/app/.gitignore" afterPath="$PROJECT_DIR$/storage/app/.gitignore" />
     </list>
     <ignored path="nattiv-api.iws" />
@@ -23,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/storage/app/.gitignore">
+      <file leaf-file-name="filesystems.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/filesystems.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+            <state relative-caret-position="312">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -54,6 +56,7 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/storage/app/images/.gitignore" />
         <option value="$PROJECT_DIR$/storage/app/.gitignore" />
       </list>
     </option>
@@ -155,6 +158,50 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nattiv-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nattiv-api" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nattiv-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nattiv-api" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -168,6 +215,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tobechukwu.onuegbu\Documents\Custom Office Templates\nattivv\nattiv-api\storage\app\images\products" />
+      <recent name="C:\Users\tobechukwu.onuegbu\Documents\Custom Office Templates\nattivv\nattiv-api\storage\app\images" />
       <recent name="C:\Users\tobechukwu.onuegbu\Documents\Custom Office Templates\nattivv\nattiv-api" />
       <recent name="C:\Users\FOREGAN\Documents\MyRepositories\nattiv-api\storage\app\images\products" />
     </key>
@@ -252,7 +300,7 @@
       <workItem from="1483115517055" duration="1234000" />
       <workItem from="1483811729263" duration="1330000" />
       <workItem from="1491295178613" duration="4385000" />
-      <workItem from="1491311695506" duration="3337000" />
+      <workItem from="1491311695506" duration="4214000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branches 'developer_tobe' and 'master' of https://bitbucket.org/nattivnova/nattiv-api&#10;&#10;# Conflicts:&#10;#&#9;.idea/dictionaries/FOREGAN.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/Http/routes.php&#10;#&#9;database/seeds/DatabaseSeeder.php&#10;#&#9;packages/nattivv/online-payments/src/config/payments.php&#10;">
       <created>1480886920063</created>
@@ -300,7 +348,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61575000" />
+    <option name="totallyTimeSpent" value="62452000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -361,93 +409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <marker date="1490554153487" expanded="false" signature="9:407" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="422:470" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="440:469" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="529:4506" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="561:4505" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="1218:2696" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="1262:2695" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3389:3902" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3439:3901" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3528:3622" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3569:3621" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3965:4094" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4004:4093" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4169:4234" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4183:4233" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4289:4362" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4310:4361" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StoreController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DesignerController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4165">
-          <caret line="255" column="24" selection-start-line="251" selection-start-column="25" selection-end-line="255" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/nattivv/online-payments/src/OnlinePaymentsServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <marker date="1490554153487" expanded="false" signature="9:407" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="422:470" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="440:469" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="529:4506" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="561:4505" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="1218:2696" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="1262:2695" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3389:3902" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3439:3901" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3528:3622" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3569:3621" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="3965:4094" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4004:4093" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4169:4234" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4183:4233" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4289:4362" ph="..." />
-            <marker date="1490554153487" expanded="true" signature="4310:4361" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StoreController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
@@ -818,24 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <marker date="1490554153712" expanded="true" signature="15:2108" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="23:504" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="541:974" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1006:1429" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1449:2104" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1471:1556" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1582:1731" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1756:1886" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1907:2096" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -852,7 +795,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/cache/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/sessions/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/public/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/images/nattivv2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/images/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -862,8 +858,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        <state relative-caret-position="52">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
