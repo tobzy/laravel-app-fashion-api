@@ -38,7 +38,7 @@ return [
      'facebook' => [
         'client_id' => '1074528882639257',
         'client_secrete' => 'd22f0bcd788bd1d05c993b01e6fd324f',
-        'redirect' => 'http://localhost:8282/v1/auth/social/facebook/callback',
+        'redirect' => env('BASE_URI').'/auth/social/facebook/callback',
     ],
     
     'twitter' => [
