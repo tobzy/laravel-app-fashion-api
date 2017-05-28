@@ -159,6 +159,7 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 //        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Nattivv\OnlinePayments\OnlinePaymentsServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 
