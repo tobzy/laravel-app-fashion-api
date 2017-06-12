@@ -34,11 +34,7 @@ class AuthController extends App\Http\Controllers\ApiController
 
         //if validator fails return json error responce
         if ($validator->fails()) {
-            $error = [
-                'hasError' => true,
-                'message' => $validator->errors(),
-            ];
-            return response()->json(['errors' => $error]);
+            return $this->respondWithError(404, 'validation_error', $validator->errors());
         }
 
         // create the user and retrieve an instance.
