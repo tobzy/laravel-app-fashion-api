@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60ac3d4b-3b78-45ed-ba5e-d02386b2e664" name="Default" comment="fixed reg validation">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
     </list>
     <ignored path="nattiv-api.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/database.php">
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+            <state relative-caret-position="416">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -58,6 +60,7 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
       </list>
     </option>
   </component>
@@ -136,7 +139,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -150,51 +153,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
+              <option name="myItemId" value="database" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nattiv-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nattiv-api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nattiv-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nattiv-api" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="seeds" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -306,7 +269,7 @@
       <workItem from="1495963568945" duration="1877000" />
       <workItem from="1496672304686" duration="8672000" />
       <workItem from="1497591550351" duration="733000" />
-      <workItem from="1498557372051" duration="1311000" />
+      <workItem from="1498557372051" duration="2662000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branches 'developer_tobe' and 'master' of https://bitbucket.org/nattivnova/nattiv-api&#10;&#10;# Conflicts:&#10;#&#9;.idea/dictionaries/FOREGAN.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;app/Http/routes.php&#10;#&#9;database/seeds/DatabaseSeeder.php&#10;#&#9;packages/nattivv/online-payments/src/config/payments.php&#10;">
       <created>1480886920063</created>
@@ -361,7 +324,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89329000" />
+    <option name="totallyTimeSpent" value="90680000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -373,8 +336,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22604166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -383,7 +346,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27484143" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27484143" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -423,20 +386,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StoreController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
@@ -715,13 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DesignerController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-260">
@@ -794,8 +736,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+        <state relative-caret-position="260">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <marker date="1498558874810" expanded="true" signature="177:4031" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="185:604" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="648:1084" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="1143:1791" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="1817:2845" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="1840:1991" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="2015:2419" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="2443:2837" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="2855:3288" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="3333:3752" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="3772:4027" ph="..." />
+            <marker date="1498558874810" expanded="true" signature="3825:4019" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <marker date="1490554153487" expanded="false" signature="9:407" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="422:470" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="440:469" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="529:4506" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="561:4505" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="1218:2696" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="1262:2695" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="3389:3902" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="3439:3901" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="3528:3622" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="3569:3621" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="3965:4094" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="4004:4093" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="4169:4234" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="4183:4233" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="4289:4362" ph="..." />
+            <marker date="1490554153487" expanded="true" signature="4310:4361" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <marker date="1490554153972" expanded="true" signature="11:88" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="126:3165" ph="{...}" />
+            <marker date="1490554153972" expanded="true" signature="137:201" ph=" Run the database seeds. ..." />
+            <marker date="1490554153972" expanded="true" signature="229:3162" ph="{...}" />
+            <marker date="1490554153972" expanded="true" signature="388:712" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="389:711" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="743:1028" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="744:1027" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1059:1344" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1060:1343" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1380:1567" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1381:1566" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1667:3155" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1705:2184" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="1706:2183" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2220:2538" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2221:2537" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2573:2890" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2574:2889" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2929:3144" ph="..." />
+            <marker date="1490554153972" expanded="true" signature="2930:3143" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding />
         </state>
       </provider>
