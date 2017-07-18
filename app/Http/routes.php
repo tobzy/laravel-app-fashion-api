@@ -29,6 +29,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('auth/social', 'SocialAuthController@authSocial');
 
     Route::get('product/{uuid}/image','StoreController@getProductImage');
+    Route::get('image/{id}','StoreController@getImage');
 
 
     Route::group(['middleware' => ['jwt.auth']], function() {

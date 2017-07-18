@@ -69,6 +69,14 @@ class StoreController extends ApiController
         return Storage::get('images/products/'.$product->image);
     }
 
+    public function getImage($id){
+        $image = App\ProductImage::whereId($id)->first();
+        if(!$image){
+            return $this->respondWithError([404,'not_found','The image does not exist']);
+        }
+        return Storage::get('images/products/'.$image->image);
+    }
+
     public function getNewProducts(){
         $products = App\Product::whereCategory('men')
             ->orWhere('category','women')
