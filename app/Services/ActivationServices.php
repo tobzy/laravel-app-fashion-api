@@ -46,10 +46,10 @@ class ActivationServices {
             'url' => $link
         );
         
-        $this->mailer->send('emails.confirmation',$emailContent, function (Message $message) use ($user) {
+        $isSent = $this->mailer->send('emails.confirmation',$emailContent, function (Message $message) use ($user) {
             $message->to($user->email)->subject('Activation mail');
         });
-        return;
+        return $isSent;
     }
 
     public function activateUser($token) {
