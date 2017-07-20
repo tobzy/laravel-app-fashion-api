@@ -51,10 +51,11 @@ class AuthController extends App\Http\Controllers\ApiController
         $user->save();
 
         //send an activation email to the users email
-        $this->activationService->sendActivationMail($user);
+        $res = $this->activationService->sendActivationMail($user);
 
         return $this->respondWithoutError([
-            'message' => 'We sent you a confirmation email. Check your email to activate your account'
+            'message' => 'We sent you a confirmation email. Check your email to activate your account',
+            'res' => $res
         ]);
     }
 
