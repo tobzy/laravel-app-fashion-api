@@ -93,7 +93,7 @@ class AuthController extends App\Http\Controllers\ApiController
     {
 
         // grab credentials from the request
-        $user = User::where('email', $request->input('email'));
+        $user = User::where('email', $request->input('email'))->first();
         if($user->confirmation != 1){
             return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login");
         }
