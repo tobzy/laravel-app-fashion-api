@@ -4,7 +4,6 @@
     <list default="true" id="c37ad4e4-7bd8-4336-94cb-8e29462731ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Services/ActivationServices.php" afterPath="$PROJECT_DIR$/app/Services/ActivationServices.php" />
     </list>
     <ignored path="nattiv-api.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,9 +27,11 @@
       <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="364">
+              <caret line="97" column="105" selection-start-line="97" selection-start-column="105" selection-end-line="97" selection-end-column="105" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -211,7 +212,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -236,12 +237,12 @@
       <workItem from="1500330333399" duration="2386000" />
       <workItem from="1500336925834" duration="7305000" />
       <workItem from="1500465053855" duration="4730000" />
-      <workItem from="1500566008940" duration="1312000" />
+      <workItem from="1500566008940" duration="2137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15733000" />
+    <option name="totallyTimeSpent" value="16558000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -727,11 +728,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-949">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <marker date="1490554153612" expanded="false" signature="27:124" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="160:1373" ph="{...}" />
+            <marker date="1490554153612" expanded="true" signature="191:270" ph=" The attributes that are mass assignable. ..." />
+            <marker date="1490554153612" expanded="true" signature="300:407" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="418:505" ph=" The attributes that should be hidden for arrays. ..." />
+            <marker date="1490554153612" expanded="true" signature="533:576" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="591:677" ph=" The attributes that should be mutated to dates. ..." />
+            <marker date="1490554153612" expanded="true" signature="790:844" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="877:928" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="964:1014" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="1049:1098" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="1133:1181" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="1222:1276" ph="..." />
+            <marker date="1490554153612" expanded="true" signature="1318:1370" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="364">
+          <caret line="97" column="105" selection-start-line="97" selection-start-column="105" selection-end-line="97" selection-end-column="105" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
