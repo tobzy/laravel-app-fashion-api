@@ -13,10 +13,10 @@
         "ramsey/uuid": "^3.4",
         "yabacon/paystack-php": "^2.0",
         "moontoast/math": "^1.1",
-        "barryvdh/laravel-cors": "^0.9.2"
+        "barryvdh/laravel-cors": "^0.9.2",
+        "fzaninotto/faker": "^1.6"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",

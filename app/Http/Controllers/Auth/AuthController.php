@@ -8,6 +8,7 @@ use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Services\ActivationServices;
 use App;
+use App\User;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Validator;
 
@@ -54,7 +55,7 @@ class AuthController extends App\Http\Controllers\ApiController
         $this->activationService->sendActivationMail($user);
 
         return $this->respondWithoutError([
-            'message' => 'We sent you a confirmation email. Check your email to activate your account'
+            'message' => 'We sent you a confirmation email. Check your email to activate your account',
         ]);
     }
 
@@ -92,6 +93,10 @@ class AuthController extends App\Http\Controllers\ApiController
     {
 
         // grab credentials from the request
+        $user = User::where('email', $request->input('email'))->first();
+        if($user->confirmation != 1){
+            return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login");
+        }
         $credentials = $request->only('email', 'password');
 
         try {
