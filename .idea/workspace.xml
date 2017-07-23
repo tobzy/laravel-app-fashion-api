@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c37ad4e4-7bd8-4336-94cb-8e29462731ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
     </list>
     <ignored path="nattiv-api.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,14 +23,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <file leaf-file-name="PaymentController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="95" column="72" selection-start-line="95" selection-start-column="72" selection-end-line="95" selection-end-column="72" />
-              <folding>
-                <element signature="e#45#81#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="598">
+              <caret line="199" column="35" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,6 +61,9 @@
       </GulpfileState>
     </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -98,6 +98,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -218,7 +219,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -226,6 +226,9 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -237,12 +240,14 @@
       <workItem from="1500330333399" duration="2386000" />
       <workItem from="1500336925834" duration="7305000" />
       <workItem from="1500465053855" duration="4730000" />
-      <workItem from="1500566008940" duration="2874000" />
+      <workItem from="1500566008940" duration="5000000" />
+      <workItem from="1500821507628" duration="34000" />
+      <workItem from="1500823470737" duration="384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17295000" />
+    <option name="totallyTimeSpent" value="19839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -255,7 +260,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24207188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24207188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -284,56 +289,80 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/Activation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2574">
+          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding>
+            <marker date="1490554153303" expanded="false" signature="27:81" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="115:2529" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="124:203" ph=" The attributes that are mass assignable. ..." />
+            <marker date="1490554153303" expanded="true" signature="233:265" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="276:352" ph=" The table associated with the model. ..." />
+            <marker date="1490554153303" expanded="true" signature="410:486" ph=" Sets wether to require time stamps. ..." />
+            <marker date="1490554153303" expanded="true" signature="530:626" ph=" generates a token from hash and sha. ..." />
+            <marker date="1490554153303" expanded="true" signature="669:745" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="755:856" ph=" creates an activation for the given user. ..." />
+            <marker date="1490554153303" expanded="true" signature="904:1092" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="985:1040" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1102:1224" ph=" used to regenerate token incase user doesnt get initial token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1270:1479" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1365:1448" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1366:1447" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1488:1591" ph=" used to assign a generated token to a user. ..." />
+            <marker date="1490554153303" expanded="true" signature="1633:1848" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1698:1817" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1699:1816" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1861:1937" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1980:2052" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2065:2141" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="2192:2259" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2272:2334" ph=" Deletes the token model. ..." />
+            <marker date="1490554153303" expanded="true" signature="2381:2442" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2476:2526" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Activation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2444">
+          <caret line="95" column="45" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+          <folding>
+            <marker date="1490554153303" expanded="false" signature="27:81" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="115:2529" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="124:203" ph=" The attributes that are mass assignable. ..." />
+            <marker date="1490554153303" expanded="true" signature="233:265" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="276:352" ph=" The table associated with the model. ..." />
+            <marker date="1490554153303" expanded="true" signature="410:486" ph=" Sets wether to require time stamps. ..." />
+            <marker date="1490554153303" expanded="true" signature="530:626" ph=" generates a token from hash and sha. ..." />
+            <marker date="1490554153303" expanded="true" signature="669:745" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="755:856" ph=" creates an activation for the given user. ..." />
+            <marker date="1490554153303" expanded="true" signature="904:1092" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="985:1040" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1102:1224" ph=" used to regenerate token incase user doesnt get initial token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1270:1479" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1365:1448" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1366:1447" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1488:1591" ph=" used to assign a generated token to a user. ..." />
+            <marker date="1490554153303" expanded="true" signature="1633:1848" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1698:1817" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1699:1816" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1861:1937" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1980:2052" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2065:2141" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="2192:2259" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2272:2334" ph=" Deletes the token model. ..." />
+            <marker date="1490554153303" expanded="true" signature="2381:2442" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2476:2526" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StoreController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4264">
           <caret line="168" column="27" selection-start-line="168" selection-start-column="27" selection-end-line="168" selection-end-column="27" />
-          <folding>
-            <marker date="1500336871560" expanded="false" signature="44:114" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="159:5147" ph="{...}" />
-            <marker date="1500336871560" expanded="true" signature="170:310" ph=" API Login, on success return JWT Auth token ..." />
-            <marker date="1500336871560" expanded="true" signature="363:1495" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="517:631" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="656:692" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="734:1211" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="941:964" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="990:1013" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1217:1298" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1393:1488" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1394:1487" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1541:1990" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1552:1733" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1818:1919" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2027:2274" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2106:2205" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2314:2600" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2391:2409" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2433:2452" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2541:2593" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2542:2592" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2610:2778" ph=" API get single product item, on success returns a json data if the item ..." />
-            <marker date="1500336871560" expanded="true" signature="2833:3329" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2975:3126" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3276:3322" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3277:3321" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3339:3494" ph=" API get materials, on success return a paginated json data ..." />
-            <marker date="1500336871560" expanded="true" signature="3548:4441" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3641:4206" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3850:3873" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3899:3924" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4212:4291" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4337:4434" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4338:4433" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4451:4533" ph=" @param Request $request ..." />
-            <marker date="1500336871560" expanded="true" signature="4592:4804" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4749:4797" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4750:4796" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4846:4852" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4893:5144" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4972:4991" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5080:5137" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5081:5136" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -341,21 +370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <marker date="1500576287173" expanded="true" signature="178:4224" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="186:605" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="649:1085" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1144:1792" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1818:3038" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1841:1992" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="2016:2612" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="2244:2435" ph="//..." />
-            <marker date="1500576287173" expanded="true" signature="2636:3030" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3048:3481" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3526:3945" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3965:4220" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="4018:4212" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -370,52 +384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
           <caret line="72" column="57" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
-          <folding>
-            <marker date="1500336871560" expanded="false" signature="44:114" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="159:5147" ph="{...}" />
-            <marker date="1500336871560" expanded="true" signature="170:310" ph=" API Login, on success return JWT Auth token ..." />
-            <marker date="1500336871560" expanded="true" signature="363:1495" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="517:631" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="656:692" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="734:1211" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="941:964" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="990:1013" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1217:1298" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1393:1488" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1394:1487" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1541:1990" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1552:1733" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1818:1919" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2027:2274" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2106:2205" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2314:2600" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2391:2409" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2433:2452" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2541:2593" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2542:2592" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2610:2778" ph=" API get single product item, on success returns a json data if the item ..." />
-            <marker date="1500336871560" expanded="true" signature="2833:3329" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2975:3126" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3276:3322" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3277:3321" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3339:3494" ph=" API get materials, on success return a paginated json data ..." />
-            <marker date="1500336871560" expanded="true" signature="3548:4441" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3641:4206" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3850:3873" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3899:3924" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4212:4291" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4337:4434" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4338:4433" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4451:4533" ph=" @param Request $request ..." />
-            <marker date="1500336871560" expanded="true" signature="4592:4804" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4749:4797" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4750:4796" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4846:4852" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4893:5144" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4972:4991" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5080:5137" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5081:5136" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,12 +428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1490554153534" expanded="true" signature="96:493" ph="{...}" />
-            <marker date="1490554153534" expanded="true" signature="257:308" ph="..." />
-            <marker date="1490554153534" expanded="true" signature="345:398" ph="..." />
-            <marker date="1490554153534" expanded="true" signature="436:490" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -473,13 +435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="41" column="31" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -501,52 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="156" column="13" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
-          <folding>
-            <marker date="1500336871560" expanded="false" signature="44:114" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="159:5147" ph="{...}" />
-            <marker date="1500336871560" expanded="true" signature="170:310" ph=" API Login, on success return JWT Auth token ..." />
-            <marker date="1500336871560" expanded="true" signature="363:1495" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="517:631" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="656:692" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="734:1211" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="941:964" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="990:1013" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1217:1298" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1393:1488" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1394:1487" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1541:1990" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1552:1733" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="1818:1919" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2027:2274" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2106:2205" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2314:2600" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2391:2409" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2433:2452" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2541:2593" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2542:2592" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2610:2778" ph=" API get single product item, on success returns a json data if the item ..." />
-            <marker date="1500336871560" expanded="true" signature="2833:3329" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="2975:3126" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3276:3322" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3277:3321" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3339:3494" ph=" API get materials, on success return a paginated json data ..." />
-            <marker date="1500336871560" expanded="true" signature="3548:4441" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3641:4206" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3850:3873" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="3899:3924" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4212:4291" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4337:4434" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4338:4433" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4451:4533" ph=" @param Request $request ..." />
-            <marker date="1500336871560" expanded="true" signature="4592:4804" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4749:4797" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4750:4796" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4846:4852" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4893:5144" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="4972:4991" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5080:5137" ph="..." />
-            <marker date="1500336871560" expanded="true" signature="5081:5136" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -554,27 +463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <marker date="1495700930606" expanded="false" signature="44:104" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="146:2099" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="238:345" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="273:339" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="385:424" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="475:543" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="597:740" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="620:688" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="819:1182" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="852:1175" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="853:1174" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="926:1164" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="965:1142" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1266:2096" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1280:1498" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1347:1488" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1560:1666" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1728:1834" ph="..." />
-            <marker date="1495700930606" expanded="true" signature="1887:1992" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,21 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="7" selection-end-column="36" />
-          <folding>
-            <marker date="1500576287173" expanded="true" signature="178:4224" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="186:605" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="649:1085" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1144:1792" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1818:3038" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="1841:1992" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="2016:2612" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="2244:2435" ph="//..." />
-            <marker date="1500576287173" expanded="true" signature="2636:3030" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3048:3481" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3526:3945" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="3965:4220" ph="..." />
-            <marker date="1500576287173" expanded="true" signature="4018:4212" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -604,17 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding>
-            <marker date="1490554153712" expanded="true" signature="15:3975" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="23:561" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="616:1037" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1080:1495" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="1538:1963" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="2050:2480" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="2535:2962" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="3013:3440" ph="..." />
-            <marker date="1490554153712" expanded="true" signature="3491:3918" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -622,109 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding>
-            <marker date="1491295449365" expanded="false" signature="39:501" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="560:13170" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="570:664" ph=" The view factory instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="697:770" ph=" The Swift Mailer instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="803:911" ph=" The event dispatcher instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="945:1017" ph=" The global from address and name. ..." />
-            <marker date="1491295449365" expanded="true" signature="1049:1119" ph=" The global to address and name. ..." />
-            <marker date="1491295449365" expanded="true" signature="1149:1251" ph=" The IoC container instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="1288:1380" ph=" The queue implementation. ..." />
-            <marker date="1491295449365" expanded="true" signature="1413:1479" ph=" Array of failed recipients. ..." />
-            <marker date="1491295449365" expanded="true" signature="1528:1762" ph=" Create a new Mailer instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="1860:1967" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="1976:2120" ph=" Set the global from address and name. ..." />
-            <marker date="1491295449365" expanded="true" signature="2177:2239" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="2248:2390" ph=" Set the global to address and name. ..." />
-            <marker date="1491295449365" expanded="true" signature="2445:2505" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="2514:2661" ph=" Send a new message when only a raw text part. ..." />
-            <marker date="1491295449365" expanded="true" signature="2705:2778" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="2787:2959" ph=" Send a new message when only a plain part. ..." />
-            <marker date="1491295449365" expanded="true" signature="3018:3095" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="3104:3282" ph=" Send a new message using a view. ..." />
-            <marker date="1491295449365" expanded="true" signature="3340:4332" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="4143:4225" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="4341:4562" ph=" Queue a new e-mail message for sending. ..." />
-            <marker date="1491295449365" expanded="true" signature="4636:4817" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="4826:5061" ph=" Queue a new e-mail message for sending on the given queue. ..." />
-            <marker date="1491295449365" expanded="true" signature="5130:5204" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="5213:5544" ph=" Queue a new e-mail message for sending on the given queue. ..." />
-            <marker date="1491295449365" expanded="true" signature="5613:5689" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="5698:5964" ph=" Queue a new e-mail message for sending after (n) seconds. ..." />
-            <marker date="1491295449365" expanded="true" signature="6046:6236" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="6245:6525" ph=" Queue a new e-mail message for sending after (n) seconds on the given queue. ..." />
-            <marker date="1491295449365" expanded="true" signature="6602:6684" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="6693:6821" ph=" Build the callable for a queued e-mail job. ..." />
-            <marker date="1491295449365" expanded="true" signature="6876:7030" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="6928:6967" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="7039:7196" ph=" Handle a queued e-mail message job. ..." />
-            <marker date="1491295449365" expanded="true" signature="7251:7372" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="7381:7511" ph=" Get the true callable for a queued e-mail message. ..." />
-            <marker date="1491295449365" expanded="true" signature="7567:7764" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="7644:7722" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="7773:7915" ph=" Force the transport to re-connect. ..." />
-            <marker date="1491295449365" expanded="true" signature="7960:8029" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="8038:8279" ph=" Add the content to a given message. ..." />
-            <marker date="1491295449365" expanded="true" signature="8353:8823" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="8387:8470" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="8501:8647" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="8676:8816" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="8832:8992" ph=" Parse the given view name or array. ..." />
-            <marker date="1491295449365" expanded="true" signature="9034:9992" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="9072:9121" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="9420:9476" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="9756:9923" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="9777:9912" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="10001:10112" ph=" Send a Swift Message instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="10164:10454" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="10199:10278" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="10294:10377" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="10463:10679" ph=" Call the provided message builder. ..." />
-            <marker date="1491295449365" expanded="true" signature="10744:11054" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="10794:10859" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="10897:10976" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="11063:11154" ph=" Create a new message instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="11195:11668" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="11553:11635" ph="..." />
-            <marker date="1491295449365" expanded="true" signature="11677:11799" ph=" Render the given view. ..." />
-            <marker date="1491295449365" expanded="true" signature="11846:11917" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="11926:12027" ph=" Get the view factory instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="12066:12107" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="12116:12196" ph=" Get the Swift Mailer instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="12235:12276" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="12285:12362" ph=" Get the array of failed recipients. ..." />
-            <marker date="1491295449365" expanded="true" signature="12395:12447" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="12456:12564" ph=" Set the Swift Mailer instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="12609:12652" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="12661:12791" ph=" Set the queue manager instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="12844:12910" ph="{...}" />
-            <marker date="1491295449365" expanded="true" signature="12919:13060" ph=" Set the IoC container instance. ..." />
-            <marker date="1491295449365" expanded="true" signature="13117:13168" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Services/ActivationServices.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding>
-            <marker date="1500577038675" expanded="false" signature="9:189" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="196:257" ph=" Description of ActivationServices ..." />
-            <marker date="1500577038675" expanded="false" signature="290:351" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="380:1925" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="543:622" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="672:1311" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="734:763" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1017:1092" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1132:1288" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1210:1287" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1356:1696" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1463:1497" ph="..." />
-            <marker date="1500577038675" expanded="true" signature="1739:1922" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,32 +491,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-949">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding>
-            <marker date="1490554153612" expanded="false" signature="27:124" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="160:1373" ph="{...}" />
-            <marker date="1490554153612" expanded="true" signature="191:270" ph=" The attributes that are mass assignable. ..." />
-            <marker date="1490554153612" expanded="true" signature="300:407" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="418:505" ph=" The attributes that should be hidden for arrays. ..." />
-            <marker date="1490554153612" expanded="true" signature="533:576" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="591:677" ph=" The attributes that should be mutated to dates. ..." />
-            <marker date="1490554153612" expanded="true" signature="790:844" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="877:928" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="964:1014" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="1049:1098" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="1133:1181" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="1222:1276" ph="..." />
-            <marker date="1490554153612" expanded="true" signature="1318:1370" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="95" column="72" selection-start-line="95" selection-start-column="72" selection-end-line="95" selection-end-column="72" />
+        <state relative-caret-position="468">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Services/ActivationServices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Activation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
           <folding>
-            <element signature="e#45#81#0#PHP" expanded="true" />
+            <marker date="1490554153303" expanded="false" signature="27:81" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="115:2529" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="124:203" ph=" The attributes that are mass assignable. ..." />
+            <marker date="1490554153303" expanded="true" signature="233:265" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="276:352" ph=" The table associated with the model. ..." />
+            <marker date="1490554153303" expanded="true" signature="410:486" ph=" Sets wether to require time stamps. ..." />
+            <marker date="1490554153303" expanded="true" signature="530:626" ph=" generates a token from hash and sha. ..." />
+            <marker date="1490554153303" expanded="true" signature="669:745" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="755:856" ph=" creates an activation for the given user. ..." />
+            <marker date="1490554153303" expanded="true" signature="904:1092" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="985:1040" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1102:1224" ph=" used to regenerate token incase user doesnt get initial token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1270:1479" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1365:1448" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1366:1447" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1488:1591" ph=" used to assign a generated token to a user. ..." />
+            <marker date="1490554153303" expanded="true" signature="1633:1848" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="1698:1817" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1699:1816" ph="..." />
+            <marker date="1490554153303" expanded="true" signature="1861:1937" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="1980:2052" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2065:2141" ph=" Returns the activation model by token. ..." />
+            <marker date="1490554153303" expanded="true" signature="2192:2259" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2272:2334" ph=" Deletes the token model. ..." />
+            <marker date="1490554153303" expanded="true" signature="2381:2442" ph="{...}" />
+            <marker date="1490554153303" expanded="true" signature="2476:2526" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="199" column="35" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
