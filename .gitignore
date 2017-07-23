@@ -9,3 +9,5 @@ Homestead.json
 composer.phar
 /public/uploads/
 composer.lock
+/.idea/workspace.xml
+/.idea/
