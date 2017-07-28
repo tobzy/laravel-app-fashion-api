@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Storage;
+use Ramsey\Uuid\Uuid;
+use App\Order;
+use App\OrderContent;
 
 class StoreController extends ApiController
 {
@@ -174,5 +175,46 @@ class StoreController extends ApiController
         return $this->respondWithoutError([
             'new_materials' => $new_materials
         ]);
+    }
+
+    public function addOrder(Request $request){
+
+        $order = null;
+
+        if(!$request->has('order_uuid')){
+            $order = Order::create([
+                'uuid' => Uuid::uuid4(),
+                'user_id' => $this->user->id,
+
+            ]);
+        }else{
+            $order = Order::whereUuid($request->input('order_uuid'))->first();
+        }
+
+        $product = App\Product::whereUuid($request->input('product_uuid'))->first();
+        $material = App\Material::whereId($request->input('material_id'))->first();
+        $qty = $request->input('quantity');
+
+        $content = new OrderContent([
+            'order_id' => $order->id,
+            'product_id' => $product -> id,
+            'quantity' => $qty,
+            'product_price' => $product -> price,
+            'material_id' => $material->id,
+            'material_price' => $material -> price
+        ]);
+
+        $order->content()->save($content);
+        $order->load('content');
+
+        return $this->respondWithoutError(['order' => $order]);
+    }
+
+    public function updateOrderContent(Request $request,$uuid){
+        $content = OrderContent::whereUuid($uuid)->first();
+
+        $content->fill($request->all());
+
+        return $this->respondWithoutError(['order_content'=>$content]);
     }
 }

@@ -18,6 +18,18 @@ class UsersController extends ApiController
         
     }
 
+
+    public function getCart(){
+        $cart = App\Order::with('content')->whereUserId($this -> user -> id)
+            ->whereStatus('cart')
+            ->orderBy('created_at','DESC')
+            ->first();
+
+        return $this->respondWithoutError([
+            'cart' => $cart
+        ]);
+    }
+
     public function getOrders(Request $request ){
         $orders = App\Order::whereUserId($this -> user -> id)
             ->orderBy('created_at','DESC')
