@@ -35,10 +35,12 @@ class StoreController extends ApiController
             $min_price = $request->input('filter_min_price');
             $max_price = $request->input('filter_max_price');
 
-            $products = App\Product::whereCategory($cat)
+            $products = App\Product::with('default_material')
+                ->whereCategory($cat)
                 ->where('price','>=',$min_price)
                 ->where('price','<=',$max_price)
                 ->paginate(9);
+
 
             $url_query['filter_min_price'] = $min_price;
             $url_query['filter_max_price'] = $max_price;
@@ -46,7 +48,8 @@ class StoreController extends ApiController
 
         }else{
 
-            $products = App\Product::whereCategory($cat)->paginate(9);
+            $products = App\Product::with('default_material')->whereCategory($cat)->paginate(9);
+            $products->load('default_material');
         }
 
         $products->appends($url_query)->links();
