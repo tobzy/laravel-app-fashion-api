@@ -94,17 +94,22 @@ class AuthController extends App\Http\Controllers\ApiController
 
         // grab credentials from the request
         $user = User::where('email', $request->input('email'))->first();
-        if($user->confirmation != 1){
-            return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login");
+        if($user){
+            if($user->confirmation != 1){
+                return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login");
+            }
+            $credentials = $request->only('email', 'password');
+        }else{
+            return $this->respondWithError('ERR-AUTH-001','Invalid Credentials','Username Or Password Is Incorrect');
         }
-        $credentials = $request->only('email', 'password');
+
+
 
         try {
             // attempt to verify the credentials and create a token for the user
 //            $jw = new JWTAuth();
             if (!$token = JWTAuth::attempt($credentials)) {
                 return $this->respondWithError('ERR-AUTH-001','Invalid Credentials','Username Or Password Is Incorrect');
-
             }
 
         } catch (JWTException $e) {
