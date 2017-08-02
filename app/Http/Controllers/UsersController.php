@@ -19,7 +19,7 @@ class UsersController extends ApiController
                 ->orderBy('created_at','DESC')
                 ->first();
             $the_user = $this->transformUserToJson($this->user);
-            $the_user->cart = $cart;
+            $the_user['cart'] = $cart;
             return $this->respondWithoutError($the_user);
         }
         
