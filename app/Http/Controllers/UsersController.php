@@ -18,9 +18,9 @@ class UsersController extends ApiController
                 ->whereStatus('cart')
                 ->orderBy('created_at','DESC')
                 ->first();
-            $the_user = $this->user;
+            $the_user = $this->transformUserToJson($this->user);
             $the_user->cart = $cart;
-            return $this->respondWithoutError($this->transformUserToJson($the_user));
+            return $this->respondWithoutError($the_user);
         }
         
     }
