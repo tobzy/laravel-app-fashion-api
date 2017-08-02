@@ -13,7 +13,14 @@ class UsersController extends ApiController
     public function authUser(){
         //check if the user has been deleted
         if(!$this->user -> trashed()){
-            return $this->respondWithoutError($this->transformUserToJson($this->user));
+            //get Cart
+            $cart = App\Order::with('content')->whereUserId($this -> user -> id)
+                ->whereStatus('cart')
+                ->orderBy('created_at','DESC')
+                ->first();
+            $the_user = $this->user;
+            $the_user->cart = $cart;
+            return $this->respondWithoutError($this->transformUserToJson($the_user));
         }
         
     }
