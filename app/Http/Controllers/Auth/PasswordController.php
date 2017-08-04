@@ -54,7 +54,7 @@ class PasswordController extends ApiController
         $current_password = $request -> input('current_password');
         $new_password = $request->input('new_password');
 
-        $user = App\User::whereUuid($request->input('uuid'))
+        $user = App\User::where('id', $this->user->id)
             ->wherePassword(bcrypt($current_password))
             ->first();
 
@@ -67,7 +67,7 @@ class PasswordController extends ApiController
             ]);
         }
 
-        return $this->respondWithError($this->user,$request->all(),'The password your provided is wrong');
+        return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
 
     }
 
