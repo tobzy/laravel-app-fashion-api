@@ -99,4 +99,28 @@ class AccountController extends ApiController {
             ]
         ]);
     }
+    public function changePassword(Request $request)
+    {
+        $uuid = $request ->input('uuid');
+        $email = $request ->input('email');
+        $current_password = $request -> input('current_password');
+        $new_password = $request->input('new_password');
+
+        $user = App\User::whereEmail($email)
+            ->whereUuid($this->user->id)
+            ->wherePassword(bcrypt($current_password))
+            ->first();
+
+        if($user){
+            $user -> password = bcrypt($new_password);
+            $user -> save();
+
+            return $this->respondWithoutError([
+                'user' => $user
+            ]);
+        }
+
+        return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
+
+    }
 }

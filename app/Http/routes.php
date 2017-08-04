@@ -35,6 +35,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::group(['middleware' => ['jwt.auth']], function() {
         Route::get('users', 'UsersController@authUser');
         Route::get('account', 'AccountController@account');
+        Route::post('account/password/update', 'Auth\PasswordController@changePassword');
         Route::get('account/address','AccountController@getAddresses');
         Route::post('account/address','AccountController@newAddress');
         Route::get('account/address/{id}','AccountController@getSingleAddress');
