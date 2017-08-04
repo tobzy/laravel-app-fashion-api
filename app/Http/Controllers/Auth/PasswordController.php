@@ -68,7 +68,7 @@ class PasswordController extends ApiController
             ]);
         }
 
-        return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
+        return $this->respondWithError($user,$request->all(),'The password your provided is wrong');
 
     }
 
