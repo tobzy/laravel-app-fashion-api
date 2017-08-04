@@ -55,6 +55,8 @@ class PasswordController extends ApiController
         $current_password = $request -> input('current_password');
         $new_password = $request->input('new_password');
 
+        dd($this->user->id);
+
         $user = App\User::where('id',$this->user->id)
             ->wherePassword(bcrypt($current_password))
             ->first();
