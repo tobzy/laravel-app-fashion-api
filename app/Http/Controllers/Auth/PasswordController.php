@@ -29,8 +29,7 @@ class PasswordController extends ApiController
     public function __construct(PasswordServices $passwordServices)
     {
         $this->passwordServices = $passwordServices;
-
-        //parent::__construct();
+        parent::__construct();
     }
 
 
@@ -55,16 +54,16 @@ class PasswordController extends ApiController
         $current_password = $request -> input('current_password');
         $new_password = $request->input('new_password');
 
-        $userr = App\User::whereUuid($request->input('uuid'))
+        $user = App\User::whereUuid($request->input('uuid'))
             ->wherePassword(bcrypt($current_password))
             ->first();
 
-        if($userr){
-            $userr -> password = bcrypt($new_password);
-            $userr -> save();
+        if($user){
+            $user -> password = bcrypt($new_password);
+            $user -> save();
 
             return $this->respondWithoutError([
-                'user' => $userr
+                'user' => $user
             ]);
         }
 
