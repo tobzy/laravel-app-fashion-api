@@ -6,6 +6,7 @@ use App;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Services\PasswordServices;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 
 class PasswordController extends ApiController
@@ -55,16 +56,18 @@ class PasswordController extends ApiController
         $new_password = $request->input('new_password');
 
         $user = App\User::where('id', $this->user->id)
-            ->wherePassword(bcrypt($current_password))
             ->first();
 
         if($user){
-            $user -> password = bcrypt($new_password);
-            $user -> save();
+           if( Hash::check($current_password, $user->password)){
+               $user -> password = bcrypt($new_password);
+               $user -> save();
 
-            return $this->respondWithoutError([
-                'user' => $user
-            ]);
+               return $this->respondWithoutError([
+                   'user' => $user
+               ]);
+           }
+
         }
 
         return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
