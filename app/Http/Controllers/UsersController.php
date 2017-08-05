@@ -18,8 +18,10 @@ class UsersController extends ApiController
                 ->whereStatus('cart')
                 ->orderBy('created_at','DESC')
                 ->first();
+            $cards = App\Paystack::whereUserId($this ->user -> id)->get(['id','auth_code','card_type','last4','exp_month','exp_year']);
             $the_user = $this->transformUserToJson($this->user);
             $the_user['cart'] = $cart;
+            $the_user['cards'] = $cards;
             return $this->respondWithoutError($the_user);
         }
         
