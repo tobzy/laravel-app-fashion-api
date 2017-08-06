@@ -57,7 +57,7 @@ class UsersController extends ApiController
     public function deleteCreditCard($id){
         $card = App\Paystack::whereId($id)->whereUserId($this->user->id)->first();
 
-        if(true) {
+        if($card) {
             $card->delete();
             return $this->respondWithoutError([
                 'deleted' => true,
