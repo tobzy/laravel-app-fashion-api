@@ -192,7 +192,6 @@ class StoreController extends ApiController
     public function addOrder(Request $request)
     {
 
-        $content = null;
         $order = null;
         $product = App\Product::whereUuid($request->input('product_uuid'))->first();
         $material = App\Material::whereId($request->input('material_id'))->first();
@@ -235,15 +234,13 @@ class StoreController extends ApiController
                     'material_price' => $material->price
                 ]);
                 $order->content()->save($content);
-                $content->load('material','product');
             }
 
         } else {
             $order = Order::whereUuid($request->input('order_uuid'))->first();
         }
 
-//        $order->load('content');
-        $order->content = $content;
+        $order->load('content');
 
         return $this->respondWithoutError(['order' => $order]);
     }
