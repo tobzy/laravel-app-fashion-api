@@ -210,7 +210,6 @@ class StoreController extends ApiController
                         'material_id' => $material->id,
                         'material_price' => $material->price
                     ]);
-                    $updateStatus = 'update';
                 } else {
                     $content = new OrderContent([
                         'order_id' => $order->id,
@@ -221,7 +220,6 @@ class StoreController extends ApiController
                         'material_price' => $material->price
                     ]);
                     $order->content()->save($content);
-                    $updateStatus = 'new';
                 }
             }else{
                 $order = Order::create([
@@ -237,14 +235,13 @@ class StoreController extends ApiController
                     'material_price' => $material->price
                 ]);
                 $order->content()->save($content);
-                $updateStatus = 'new';
             }
 
         } else {
             $order = Order::whereUuid($request->input('order_uuid'))->first();
         }
 
-        $order->load('content');
+        $order->load('content.material','content.product');
         $order->updateStatus = $updateStatus;
 
         return $this->respondWithoutError(['order' => $order]);
