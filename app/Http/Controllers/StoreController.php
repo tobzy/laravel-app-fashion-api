@@ -255,4 +255,25 @@ class StoreController extends ApiController
 
         return $this->respondWithoutError(['order_content' => $content]);
     }
+
+    public function deleteOrderContent($id){
+            $order_content = OrderContent::where('product_id', $id)->first();
+
+            if($order_content){
+                $order_content->delete();
+                return $this->respondWithoutError([
+                    'deleted' => true,
+                    'cartItem' => $order_content,
+                    'message' => 'Cart item deleted successfully',
+                ]);
+            }
+
+
+        return $this->respondWithoutError([
+            'deleted' => false,
+            'message' => 'The item does not exist',
+        ]);
+
+
+    }
 }
