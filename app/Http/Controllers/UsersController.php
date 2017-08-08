@@ -14,7 +14,7 @@ class UsersController extends ApiController
         //check if the user has been deleted
         if(!$this->user -> trashed()){
             //get Cart
-            $cart = App\Order::with('content.product')->whereUserId($this -> user -> id)
+            $cart = App\Order::with('content.product', 'content.material')->whereUserId($this -> user -> id)
                 ->whereStatus('cart')
                 ->orderBy('created_at','DESC')
                 ->first();
