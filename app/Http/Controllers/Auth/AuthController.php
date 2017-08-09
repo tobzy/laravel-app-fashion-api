@@ -30,7 +30,7 @@ class AuthController extends App\Http\Controllers\ApiController
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         //if validator fails return json error responce
