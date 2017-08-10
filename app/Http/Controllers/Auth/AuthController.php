@@ -59,7 +59,7 @@ class AuthController extends App\Http\Controllers\ApiController
         }
         catch (\Exception $e)
         {
-            return $this->respondWithError('ERR-AUTH-001','Invalid Credentials','Couldn\'t send mail, Try again');
+            return $this->respondWithError('ERR-AUTH-001','Invalid Credentials',$e->getMessage());
         }
         $user->save();
 
