@@ -39,23 +39,35 @@ class AuthController extends App\Http\Controllers\ApiController
         }
 
         // create the user and retrieve an instance.
-        $user = App\User::create([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-        ]);
+//        $user = App\User::create([
+//            'first_name' => $request->input('first_name'),
+//            'last_name' => $request->input('last_name'),
+//            'email' => $request->input('email'),
+//            'password' => bcrypt($request->input('password')),
+//        ]);
+        $user = new User();
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
 
         //develop a uuid from the id of the user.
         $uuid5 = Uuid::uuid5(Uuid::NAMESPACE_DNS, $user->id . '.com');
         $user->uuid = $uuid5;
+        try{
+            $this->activationService->sendActivationMail($user);
+        }
+        catch (\Exception $e)
+        {
+            return $this->respondWithError('ERR-AUTH-001','Invalid Credentials','Couldn\'t send mail, Try again');
+        }
         $user->save();
 
         //send an activation email to the users email
-        $this->activationService->sendActivationMail($user);
+
 
         return $this->respondWithoutError([
-            'message' => 'We sent you a confirmation email. Check your email to activate your account',
+            'message' => 'A confirmation email has been sent to you. Please check your email.',
         ]);
     }
 
@@ -96,7 +108,7 @@ class AuthController extends App\Http\Controllers\ApiController
         $user = User::where('email', $request->input('email'))->first();
         if($user){
             if($user->confirmation != 1){
-                return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login");
+                return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login. If you can't find it in inbox, please check the spam folder.");
             }
             $credentials = $request->only('email', 'password');
         }else{
