@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Validator;
 
 class AccountController extends ApiController {
 
@@ -59,6 +60,20 @@ class AccountController extends ApiController {
         ]);
     }
     public function updateAddress($id,Request $request) {
+
+        //validate the post request
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'street_add' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            return $this->respondWithError(404, 'validation_error', $validator->errors());
+        }
         $address = App\Address::whereUserId($this->user->id)->whereId($id)->first();
 
         if (!$address) {
