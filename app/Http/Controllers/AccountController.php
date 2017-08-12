@@ -68,6 +68,7 @@ class AccountController extends ApiController {
             'city' => 'required',
             'state' => 'required',
             'country' => 'required',
+            'phone_no' => 'required'
         ]);
 
         //if validator fails return json error responce
