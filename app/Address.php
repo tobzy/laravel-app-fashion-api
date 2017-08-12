@@ -8,7 +8,7 @@ class Address extends Model
 {
     protected $table = 'addresses';
 
-    protected $fillable = ['user_id','street_add','city','state','country','phone_no','type'];
+    protected $fillable = ['user_id','full_name','street_add','city','state','country','phone_no','type'];
     
     public function user(){
         return $this ->belongsTo('App\User');
