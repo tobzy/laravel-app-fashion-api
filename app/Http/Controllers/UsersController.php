@@ -10,10 +10,26 @@ use App\Http\Requests;
 class UsersController extends ApiController
 {
     
-    public function authUser(){
+    public function authUser(Request $request){
         //check if the user has been deleted
         if(!$this->user -> trashed()){
-            return $this->respondWithoutError($this->transformUserToJson($this->user));
+            //get Cart
+            $cart = App\Order::with('content.product', 'content.material')->whereUserId($this -> user -> id)
+                ->whereStatus('cart')
+                ->orderBy('created_at','DESC')
+                ->first();
+            $cards = App\Paystack::whereUserId($this ->user -> id)->get(['id','auth_code','card_type','last4','exp_month','exp_year']);
+
+            $addresses = App\Address::where('user_id',$this->user->id)
+                ->limit($request->input('limit'))
+                ->get();
+
+
+            $the_user = $this->transformUserToJson($this->user);
+            $the_user['cart'] = $cart;
+            $the_user['cards'] = $cards;
+            $the_user['addresses'] = $addresses;
+            return $this->respondWithoutError($the_user);
         }
         
     }
@@ -48,7 +64,7 @@ class UsersController extends ApiController
     public function deleteCreditCard($id){
         $card = App\Paystack::whereId($id)->whereUserId($this->user->id)->first();
 
-        if(true) {
+        if($card) {
             $card->delete();
             return $this->respondWithoutError([
                 'deleted' => true,

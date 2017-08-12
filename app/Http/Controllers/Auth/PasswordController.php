@@ -6,6 +6,8 @@ use App;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Services\PasswordServices;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class PasswordController extends ApiController
 {
@@ -28,8 +30,7 @@ class PasswordController extends ApiController
     public function __construct(PasswordServices $passwordServices)
     {
         $this->passwordServices = $passwordServices;
-
-        //parent::__construct();
+        parent::__construct();
     }
 
 
@@ -41,23 +42,32 @@ class PasswordController extends ApiController
      */
     public function changePassword(Request $request)
     {
-        $uuid = $request ->input('uuid');
-        $email = $request ->input('email');
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'new_password' => 'required|min:8'
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            return $this->respondWithError(404, 'validation_error', $validator->errors());
+        }
+
         $current_password = $request -> input('current_password');
         $new_password = $request->input('new_password');
 
-        $user = App\User::whereEmail($email)
-            ->whereUuid($uuid)
-            ->wherePassword(bcrypt($current_password))
+        $user = App\User::where('id', $this->user->id)
             ->first();
 
         if($user){
-            $user -> password = bcrypt($new_password);
-            $user -> save();
+           if( Hash::check($current_password, $user->password)){
+               $user -> password = bcrypt($new_password);
+               $user -> save();
 
-            return $this->respondWithoutError([
-                'user' => $user
-            ]);
+               return $this->respondWithoutError([
+                   'user' => $user
+               ]);
+           }
+
         }
 
         return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');

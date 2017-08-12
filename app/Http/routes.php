@@ -35,6 +35,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::group(['middleware' => ['jwt.auth']], function() {
         Route::get('users', 'UsersController@authUser');
         Route::get('account', 'AccountController@account');
+        Route::post('account/password/update', 'Auth\PasswordController@changePassword');
         Route::get('account/address','AccountController@getAddresses');
         Route::post('account/address','AccountController@newAddress');
         Route::get('account/address/{id}','AccountController@getSingleAddress');
@@ -45,6 +46,11 @@ Route::group(['prefix' => 'v1'], function() {
         Route::put('account/measurements', 'MeasurementController@updateMeasurements');
 
         Route::get('user/measurement/{option}','MeasurementController@setMeasurements');
+
+        Route::post('order/add','StoreController@addOrder');
+        Route::patch('order/content/{uuid}','StoreController@updateOrderContent');
+        Route::delete('order/{id}/delete','StoreController@deleteOrderContent');
+
 
         Route::get('account/cart','UsersController@getCart');
         Route::get('account/orders','UsersController@getOrders');
@@ -69,8 +75,6 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('store/new_items','StoreController@getNewProducts');
     Route::get('store/item','StoreController@getSingleItem');
 
-    Route::post('order/add','StoreController@addOrder');
-    Route::patch('order/content/{uuid}','StoreController@updateOrderContent');
 
     Route::get('materials','StoreController@getMaterials');
     Route::get('material','StoreController@getSingleMaterial');

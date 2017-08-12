@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Validator;
 
 class AccountController extends ApiController {
 
@@ -59,6 +60,21 @@ class AccountController extends ApiController {
         ]);
     }
     public function updateAddress($id,Request $request) {
+
+        //validate the post request
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'street_add' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'country' => 'required',
+            'phone_no' => 'required'
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            return $this->respondWithError(404, 'validation_error', $validator->errors());
+        }
         $address = App\Address::whereUserId($this->user->id)->whereId($id)->first();
 
         if (!$address) {
@@ -98,5 +114,29 @@ class AccountController extends ApiController {
                 'order_content'=>$order_content,
             ]
         ]);
+    }
+    public function changePassword(Request $request)
+    {
+        $uuid = $request ->input('uuid');
+        $email = $request ->input('email');
+        $current_password = $request -> input('current_password');
+        $new_password = $request->input('new_password');
+
+        $user = App\User::whereEmail($email)
+            ->whereUuid($this->user->id)
+            ->wherePassword(bcrypt($current_password))
+            ->first();
+
+        if($user){
+            $user -> password = bcrypt($new_password);
+            $user -> save();
+
+            return $this->respondWithoutError([
+                'user' => $user
+            ]);
+        }
+
+        return $this->respondWithError('unauthorised','unAuthorised_access','The password your provided is wrong');
+
     }
 }
