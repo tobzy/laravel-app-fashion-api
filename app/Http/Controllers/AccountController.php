@@ -36,6 +36,7 @@ class AccountController extends ApiController {
             'country' => $request -> input('country'),
             'phone_no' => $request -> input('phone_no'),
             'type' => $request -> input('type'),
+            'full_name' => $request ->input('full_name'),
         ]);
 
         return $this->respondWithoutError([
