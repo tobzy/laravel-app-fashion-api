@@ -23,6 +23,7 @@ class StoreController extends ApiController
 
         $cat = $request->input('category');
         $filter = $request->input('filter');
+        $priceFilter = $request->input('priceFilter');
 
         if (!(isset($cat) && ($cat == 'men' || $cat == 'women'))) {
             return $this->respondWithError('Error', 'category_error', 'The Selected Category doest exist');
@@ -36,11 +37,27 @@ class StoreController extends ApiController
             $min_price = $request->input('filter_min_price');
             $max_price = $request->input('filter_max_price');
 
-            $products = App\Product::with('default_material')
-                ->whereCategory($cat)
-                ->where('price', '>=', $min_price)
-                ->where('price', '<=', $max_price)
-                ->paginate(9);
+            if(isset($priceFilter) && ($priceFilter == 'price_high_to_low')){
+                $products = App\Product::with('default_material')
+                    ->whereCategory($cat)
+                    ->where('price', '>=', $min_price)
+                    ->where('price', '<=', $max_price)
+                    ->orderBy('price', 'desc')
+                    ->paginate(9);
+            }elseif (isset($priceFilter) && ($priceFilter == 'price_low_to_high')){
+                $products = App\Product::with('default_material')
+                    ->whereCategory($cat)
+                    ->where('price', '>=', $min_price)
+                    ->where('price', '<=', $max_price)
+                    ->orderBy('price', 'asc')
+                    ->paginate(9);
+            }else{
+                $products = App\Product::with('default_material')
+                    ->whereCategory($cat)
+                    ->where('price', '>=', $min_price)
+                    ->where('price', '<=', $max_price)
+                    ->paginate(9);
+            }
 
 
             $url_query['filter_min_price'] = $min_price;
