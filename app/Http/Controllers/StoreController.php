@@ -217,12 +217,13 @@ class StoreController extends ApiController
 
         if (!$request->has('order_uuid')) {
 
-            $order = Order::where('user_id', $this->user->id)->first();
+            $order = Order::where('user_id', $this->user->id)->whereStatus('cart')->first();
             if ($order) {
-                $order_content = OrderContent::where('product_id', $product->id)->first();
+                $order_content = OrderContent::where('product_id', $product->id)->where('material_id', $material->id)->first();
+
                 if ($order_content) {
                     $order_content->update([
-                        'quantity' => $qty,
+                        'quantity' => $order_content->quantity + 1,
                         'product_price' => $product->price,
                         'material_id' => $material->id,
                         'material_price' => $material->price
