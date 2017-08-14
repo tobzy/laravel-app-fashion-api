@@ -99,18 +99,22 @@ class PaymentController extends ApiController
      */
     public function verifyTransaction(Request $request){
         $reference = $request -> input('reference');
-        $items = json_decode($request -> input('items'));
 
         //verify the transaction using the transaction reference
         $verification = Payment::driver($this->_DRIVER_PAYSTACK)->verifyTransaction($reference);
 
         if($verification -> status){
             if ($verification->data-> status == "success"){
-                //calculate the billing
-                $total = $this -> calculateBilling($items);
 
-                //create the orders
-                $this->createOrder($items,$total,$request->input('left_over_material'),$request->input('delivery_add'));
+                //set the order status to processing
+                $order = Order::whereUuid($request->input('order_uuid')) -> first();
+                $order -> status = 'processing';
+                $order -> delivery_add_id = $request -> input('delivery_add_id');
+                $order -> billing_add_id = $request->input('billing_add_id');
+                $order -> comment = $request -> input('order_comment');
+                $order -> left_over_choice = $request -> input('left_over_choice');
+                $order -> payment_method = 'Paystack (credit/debit Card)';
+                $order -> save();
 
                 // check if the user has an authorisation with this card
                 $auth = Paystack::whereUserId($this->user->id)

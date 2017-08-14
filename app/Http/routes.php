@@ -60,7 +60,7 @@ Route::group(['prefix' => 'v1'], function() {
 
         Route::post('payment/initialise_transaction', 'PaymentController@getAuthUrl');
         Route::get('payment/charge_customer','PaymentController@chargeCustomer');
-        Route::get('payment/verify_transaction', 'PaymentController@verifyTransaction');
+        Route::post('payment/verify_transaction', 'PaymentController@verifyTransaction');
     });
 
 
