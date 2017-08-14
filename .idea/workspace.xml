@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c37ad4e4-7bd8-4336-94cb-8e29462731ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" />
-    </list>
+    <list default="true" id="c37ad4e4-7bd8-4336-94cb-8e29462731ab" name="Default" comment="" />
     <ignored path="nattiv-api.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -325,15 +323,15 @@
       <workItem from="1501760917867" duration="595000" />
       <workItem from="1502182009655" duration="1402000" />
       <workItem from="1502562247237" duration="674000" />
-      <workItem from="1502615929738" duration="1585000" />
+      <workItem from="1502615929738" duration="2179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30251000" />
+    <option name="totallyTimeSpent" value="30845000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
