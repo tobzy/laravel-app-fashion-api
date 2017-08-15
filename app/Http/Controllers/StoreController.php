@@ -243,6 +243,7 @@ class StoreController extends ApiController
                 $order = Order::create([
                     'uuid' => Uuid::uuid4(),
                     'user_id' => $this->user->id,
+                    'status' => 'cart'
                 ]);
                 $content = new OrderContent([
                     'order_id' => $order->id,
@@ -256,7 +257,7 @@ class StoreController extends ApiController
             }
 
         } else {
-            $order = Order::whereUuid($request->input('order_uuid'))->first();
+            $order = Order::whereUuid($request->input('order_uuid'))->whereStatus('cart')->first();
         }
 
         $order->load('content.material','content.product');
