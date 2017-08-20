@@ -210,7 +210,6 @@ class StoreController extends ApiController
     {
 
         $order = null;
-        $updateStatus = null;
         $product = App\Product::whereUuid($request->input('product_uuid'))->first();
         $material = App\Material::whereId($request->input('material_id'))->first();
         $qty = $request->input('quantity');
@@ -261,7 +260,6 @@ class StoreController extends ApiController
         }
 
         $order->load('content.material','content.product');
-        $order->updateStatus = $updateStatus;
 
         return $this->respondWithoutError(['order' => $order]);
     }
@@ -276,7 +274,7 @@ class StoreController extends ApiController
     }
 
     public function deleteOrderContent($id){
-            $order_content = OrderContent::where('product_id', $id)->first();
+            $order_content = OrderContent::where('id', $id)->first();
 
             if($order_content){
                 $order_content->delete();
