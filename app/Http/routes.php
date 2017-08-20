@@ -22,6 +22,7 @@ Route::group(['prefix' => 'v1'], function() {
     Route::post('auth/deauth', 'Auth\AuthController@deauthenticate');
     Route::post('auth/create', 'Auth\AuthController@create');
     Route::get('auth/activation/{token}', 'Auth\AuthController@activate')->name('user.activate');
+    Route::post('auth/email/sendconfirmation', 'Auth\AuthController@resendConfirmationLink');
 
     Route::put('auth/password_reset_email','Auth\PasswordController@sendResetPasswordEmail');
     Route::get('auth/password_reset','Auth\PasswordController@resetPassword')->name('user.password.reset');

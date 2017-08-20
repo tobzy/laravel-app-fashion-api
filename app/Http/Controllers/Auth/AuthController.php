@@ -140,4 +140,28 @@ class AuthController extends App\Http\Controllers\ApiController
         JWTAuth::invalidate($request->input('token'));
     }
 
+    public function resendConfirmationLink(Request $request)
+    {
+        //validate the post request
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+        ]);
+
+        //if validator fails return json error responce
+        if ($validator->fails()) {
+            return $this->respondWithError(404, 'validation_error', $validator->errors());
+        }
+
+        $user = User::where('email', $request->input('email'))->first();
+
+        if($user){
+            $this->activationService->sendActivationMail($user);
+        }
+
+        return $this->respondWithoutError([
+            'message' => 'A confirmation email has been sent to you. Please check your email.',
+            'user' => $user
+        ]);
+
+    }
 }

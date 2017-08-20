@@ -32,7 +32,8 @@ class ActivationServices {
 
     public function sendActivationMail($user) {
 
-        if ($user->confirmed || !$this->shouldSend($user)) {
+//        if ($user->confirmed || !$this->shouldSend($user)) {
+        if ($user->confirmed) {
             return;
         }
 
