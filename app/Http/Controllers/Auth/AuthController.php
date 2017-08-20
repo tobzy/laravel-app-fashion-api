@@ -96,7 +96,7 @@ class AuthController extends App\Http\Controllers\ApiController
         $user = User::where('email', $request->input('email'))->first();
         if($user){
             if($user->confirmation != 1){
-                return $this->respondWithError('ERR-AUTH-002','auth_error',"Please confirm email before login. If you can't find it in inbox, please check the spam folder.");
+                return $this->respondWithError('ERR-AUTH-002','not_confirmed_error',"Please confirm email before login. If you can't find it in inbox, please check the spam folder.");
             }
             $credentials = $request->only('email', 'password');
         }else{
