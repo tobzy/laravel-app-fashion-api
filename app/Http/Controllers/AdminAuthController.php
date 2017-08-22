@@ -13,7 +13,7 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Validator;
 use DB;
 
-class AuthController extends App\Http\Controllers\ApiController
+class AdminAuthController extends ApiController
 {
 
     protected $activationService;
