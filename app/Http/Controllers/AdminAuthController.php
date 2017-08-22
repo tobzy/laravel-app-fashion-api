@@ -100,7 +100,10 @@ class AdminAuthController extends ApiController
                     ->where('username', $username)
                     ->update(['token' => $token]);
 
-                return $this->respondWithoutError(['token' => $user->token]);
+                return $this->respondWithoutError([
+                    'token' => $token,
+                    'user' => collect($user)
+                ]);
             }
         }
 
