@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
         'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
         'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
         'designer.auth' =>\App\Http\Middleware\AuthenticateDesigner::class,
+        'admin.auth' =>\App\Http\Middleware\AuthenticateAdmin::class,
         'img.src'=> \App\Http\Middleware\DesignViewAuthenticate::class,
     ];
 }

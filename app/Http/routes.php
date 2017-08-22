@@ -112,4 +112,19 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('/designer', 'DesignerController@getDesigner');
 
 
+
+    //admin dashboard
+
+    //login->
+    Route::post('/admin/auth', 'Auth\AdminAuthController@authenticate');
+
+
+    //put authenticated routes here....
+    Route::group(['middleware' => ['admin.auth']], function () {
+        //the admin resourse route to handle all design routes
+
+
+    });
+
+
 });
