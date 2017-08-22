@@ -96,8 +96,10 @@ class AdminAuthController extends ApiController
             if (password_verify($password, $db_password)) {
                 // all good so return the token;
                 $token = JWTAuth::fromUser($user);
-                $user->token = $token;
-                $user->save();
+                DB::table('admin')
+                    ->where('username', $username)
+                    ->update(['token' => $token]);
+
                 return $this->respondWithoutError(['token' => $user->token]);
             }
         }
