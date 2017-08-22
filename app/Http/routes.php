@@ -116,7 +116,7 @@ Route::group(['prefix' => 'v1'], function() {
     //admin dashboard
 
     //login->
-    Route::post('/admin/auth', 'Auth\AdminAuthController@authenticate');
+    Route::post('/admin/auth', 'AdminAuthController@authenticate');
 
 
     //put authenticated routes here....
